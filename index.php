@@ -32,7 +32,7 @@
               Godziny pracy
             </th></tr></table";
             while ($row= mysqli_fetch_row($idd)) {
-              $code .= "<tr><td>$row[3]</td><td><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td></tr>";
+              $code .= "<tr><td>$row[3]</td><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td></tr>";
             }
             $code .= "</table>";
             echo $code;
