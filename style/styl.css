@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: url(grafika/background.jpg);
+    background: url(../grafika/background.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     margin: 0;
