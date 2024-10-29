@@ -9,7 +9,7 @@
 <body>
     <header>
         <h1>Czas Pracy Pracowników</h1>
-    </header>
+    </header> 
     <nav>
         <a href="#strona_glowna">Strona Główna</a>
         <a href="#pracownicy">Pracownicy</a>
