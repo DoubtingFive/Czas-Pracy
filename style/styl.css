@@ -5,6 +5,7 @@ body {
     background-attachment: fixed;
     margin: 0;
     padding: 0;
+    color:white
 }
 header {
     background-color: #333;
@@ -27,7 +28,7 @@ nav a:hover {
     background-color: #555;
 }
 main {
-    background-color: rgba(0,0,0,0.33);
+    background-color: rgba(0,0,0,0.45);
     padding: 20px;
 }
 table {
@@ -37,13 +38,14 @@ table {
 }
 table, th, td {
     border: 1px solid #ddd;
-    box-shadow: 0px 0px 2px 3px #fff;
 }
 th, td {
     padding: 10px;
     text-align: left;
+    background-color: rgba(0,0,0,0.45);
 }
 th {
     background-color: #333;
     color: #fff;
+    text-shadow: 1px 1px 2px white, 2px 2px 1px black;
 }
