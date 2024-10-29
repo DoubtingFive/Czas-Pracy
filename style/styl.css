@@ -1,6 +1,8 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background: url(grafika/background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     margin: 0;
     padding: 0;
 }
@@ -25,6 +27,7 @@ nav a:hover {
     background-color: #555;
 }
 main {
+    background-color: rgba(0,0,0,0.33);
     padding: 20px;
 }
 table {
@@ -34,6 +37,7 @@ table {
 }
 table, th, td {
     border: 1px solid #ddd;
+    box-shadow: 0px 0px 2px 3px #fff;
 }
 th, td {
     padding: 10px;
