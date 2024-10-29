@@ -24,7 +24,7 @@
             $idd = mysqli_query($idp,"SELECT * FROM pracownicy");
             $code = "<table><tr><th>
               ID
-            </th><th><tr><th>
+            </th><th>
               Imie
             </th><th>
               Nazwisko
