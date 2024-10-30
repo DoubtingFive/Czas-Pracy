@@ -20,7 +20,8 @@ function LiczCzas() {
 	czasObj.innerHTML = "Czas sesji: "+ 
 	((h >= 1)?h+":":"") +
 	((m < 10)?(m == 0)?"00":"0"+m:m) + ":" + 
-	((s < 10)?(s == 0)?"00":"0"+s:s);
+	((s < 10)?(s == 0)?"00":"0"+s:s) +
+	"<br>Zalogowano jako " + nazwaUzytkownika;
 }
 document.addEventListener("mousemove",ResetNieaktywnosci)
 function ResetNieaktywnosci() {
