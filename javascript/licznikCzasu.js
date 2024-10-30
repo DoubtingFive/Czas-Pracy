@@ -1,5 +1,3 @@
-var d = new Date();
-const startCzasu = <?php echo $x; ?>;
 const czasObj = document.getElementById("czas");
 czasNieaktywnosci = d.getTime();
 LiczCzas();
