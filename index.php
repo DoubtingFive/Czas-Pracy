@@ -44,9 +44,9 @@ $x = $_SESSION['start_sesji'];
                 const roznica = czasTeraz - czasNieaktywnosci;
 
 				// nieaktywnosc
-                console.log(`d.getTime(): ${d.getTime()} | czasNieaktywnosci: ${czasNieaktywnosci} | diff: ${d.getTime() -= czasNieaktywnosci}`);
+                console.log(`d.getTime(): ${d.getTime()} | czasNieaktywnosci: ${czasNieaktywnosci} | diff: ${roznica}`);
 				if (roznica >= 600*1000) {
-                    console.log(`nastepuje wylogowywanie`);
+                    console.log(`nastepuje wylogowywanie`)
 					clearInterval(xddd);
                     setTimeout(Logout,1000);
 				}
