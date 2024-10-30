@@ -1,3 +1,4 @@
+var d = new Date();
 const czasObj = document.getElementById("czas");
 czasNieaktywnosci = d.getTime();
 LiczCzas();
