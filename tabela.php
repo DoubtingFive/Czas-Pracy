@@ -19,17 +19,16 @@
     </nav>
 	<main>
         <h2>Lista Pracowników i Czas Pracy</h2>
-        
             <!-- Liczenie czasu -->
 			<script>
 				czas = 0;
-				const czas = document.getElementById("czas");
+				const czasObj = document.getElementById("czas");
 				setInterval(function() { 
 					czas++;
 					h = Math.floor(czas/60/60);
 					m = Math.floor(czas/60%60);
 					s = czas%60;
-					czas.innerHTML = "Czas sesji: "+ 
+					czasObj.innerHTML = "Czas sesji: "+ 
 					(h >= 1)?h+":":"" +
 					(m < 10)?(m == 0)?"00":"0"+m:m + ":" + 
 					(s < 10)?(s == 0)?"00":"0"+s:s;
