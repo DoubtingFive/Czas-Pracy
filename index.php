@@ -31,6 +31,7 @@ $x = $_SESSION['start_sesji'];
         <!-- Liczenie czasu -->
 		<script>
 			const startCzasu = <?php echo $x; ?>;
+			const nazwaUzytkownika <?php echo $_SESSION['']; ?>
 		</script>
 		<script src="javascript/licznikCzasu.js"></script>
 
