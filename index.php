@@ -29,7 +29,7 @@ if (!isset($_SESSION['login'], $_SESSION['czas'])) {
         <h2>Lista Pracowników i Czas Pracy</h2>
         <!-- Liczenie czasu -->
 		<script>
-			czas = <?php time() - $_SESSION['session_start_time']; ?>
+			czas = <?php echo time() - $_SESSION['session_start_time']; ?>
 			const czasObj = document.getElementById("czas");
 			czasNieaktywnosci = 0;
 
