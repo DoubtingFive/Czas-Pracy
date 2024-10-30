@@ -4,6 +4,7 @@ if (!isset($_SESSION['login'], $_SESSION['start_sesji'])) {
 	header("Location: php/logowanie/login.php");
 }
 $x = $_SESSION['start_sesji'];
+$y = $_SESSION['login'];
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@ $x = $_SESSION['start_sesji'];
         <!-- Liczenie czasu -->
 		<script>
 			const startCzasu = <?php echo $x; ?>;
-			const nazwaUzytkownika <?php echo $_SESSION['login']; ?>;
+			const nazwaUzytkownika = <?php echo $y; ?>;
 		</script>
 		<script src="javascript/licznikCzasu.js"></script>
 
