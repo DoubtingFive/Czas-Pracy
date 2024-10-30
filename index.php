@@ -32,7 +32,7 @@ $y = $_SESSION['login'];
         <!-- Liczenie czasu -->
 		<script>
 			const startCzasu = <?php echo $x; ?>;
-			const nazwaUzytkownika = <?php echo $y; ?>;
+			const nazwaUzytkownika = "<?php echo $y; ?>";
 		</script>
 		<script src="javascript/licznikCzasu.js"></script>
 
