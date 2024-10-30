@@ -49,7 +49,7 @@
 
         	<!-- Tabela -->
 			<?php
-			if (isset($_POST[""])) {
+			if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				$idp = mysqli_connect("localhost","website","mySmGZ@04d5*J85o","pracownicy") or die("Nie udalo sie polaczyc z baza danych pracownicy");
 
 				$idd = mysqli_query($idp,"SELECT * FROM uzytkownicy WHERE Login=".$_POST['login']." and Haslo=".$_POST['pass']);
@@ -77,7 +77,6 @@
 				}
 				mysqli_close($idp);
 			} else{
-				echo "Nie istnieje taki uzytkownik";
 				NoLogin();
 			}
 			function NoLogin() {
