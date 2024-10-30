@@ -28,27 +28,46 @@ if (!isset($_SESSION['login'])) {
 	<main>
         <h2>Lista Pracowników i Czas Pracy</h2>
         <!-- Liczenie czasu -->
+		<script>const czasObj = document.getElementById("czas");</script>
 		<?php
-		echo "<script> czas = ".$_SESSION['czas'];
+			$czas = $_SESSION['czas'];
+			function Loop(): never {
+				$czas = 0;
+				while(true)
+				{
+					$czas++;
+					$_SESSION['czas'] = $czas;
+					$h = floor($czas/60/60);
+					$m = floor($czas/60%60);
+					$s = $czas%60;
+					echo `<script>czasObj.innerHTML = "Czas sesji: "+ 
+					(($h >= 1)?$h+":":"") +
+					(($m < 10)?($m == 0)?"00":"0"+$m:$m) + ":" + 
+					(($s < 10)?($s == 0)?"00":"0"+$s:$s);</script>`;
+					sleep(1);
+				}
+			}
 		?>
+		<script>
+			// czas = 0;
 			czasNieaktywnosci = 0;
-			const czasObj = document.getElementById("czas");
+
 			setInterval(function() {
 				// nieaktywnosc
 				czasNieaktywnosci++;
 				if (czasNieaktywnosci >= 600) {
-					// log out
+					Logout();
 				}
 
-				// czas
-				czas++;
-				h = Math.floor(czas/60/60);
-				m = Math.floor(czas/60%60);
-				s = czas%60;
-				czasObj.innerHTML = "Czas sesji: "+ 
-				((h >= 1)?h+":":"") +
-				((m < 10)?(m == 0)?"00":"0"+m:m) + ":" + 
-				((s < 10)?(s == 0)?"00":"0"+s:s);
+				// // czas
+				// czas++;
+				// h = Math.floor(czas/60/60);
+				// m = Math.floor(czas/60%60);
+				// s = czas%60;
+				// czasObj.innerHTML = "Czas sesji: "+ 
+				// ((h >= 1)?h+":":"") +
+				// ((m < 10)?(m == 0)?"00":"0"+m:m) + ":" + 
+				// ((s < 10)?(s == 0)?"00":"0"+s:s);
 			}, 1000);
 
 			document.addEventListener("mousemove",ResetNieaktywnosci)
@@ -77,6 +96,8 @@ if (!isset($_SESSION['login'])) {
 			$code .= "</table>";
 			echo $code;
 			mysqli_close($idp);
+
+			
 		?>
     </main>
 </body>
