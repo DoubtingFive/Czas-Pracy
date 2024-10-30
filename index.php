@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['login'], $_SESSION['czas'])) {
 	header("Location: login.php");
 }
-$x = time() - $_SESSION['session_start_time'];
+$x = time() - $_SESSION['start_sesji'];
 ?>
 
 <!DOCTYPE html>
