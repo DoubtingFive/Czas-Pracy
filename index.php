@@ -51,7 +51,7 @@ $x = $_SESSION['start_sesji'];
 
 				// czas
 				let czas = Math.floor(d.getTime()/1000) - startCzasu;
-                console.log(`Math.floor(d.getTime()*1000): ${Math.floor(d.getTime()*1000)} | startCzasu: ${startCzasu} | diff: ${Math.floor(d.getTime()*1000) - startCzasu}`)
+                console.log(`Math.floor(d.getTime()/1000): ${Math.floor(d.getTime()/1000)} | startCzasu: ${startCzasu} | diff: ${Math.floor(d.getTime()/1000) - startCzasu}`)
 				let h = Math.floor(czas/60/60);
 				let m = Math.floor(czas/60%60);
 				let s = czas%60;
