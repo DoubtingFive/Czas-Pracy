@@ -34,7 +34,10 @@ $x = time() - $_SESSION['start_sesji'];
 			const czasObj = document.getElementById("czas");
 			czasNieaktywnosci = 0;
 
-			setInterval(function() {
+			LiczCzas();
+			setInterval(LiczCzas, 1000);
+
+			function LiczCzas() {
 				// nieaktywnosc
 				czasNieaktywnosci++;
 				if (czasNieaktywnosci >= 600) {
@@ -50,7 +53,7 @@ $x = time() - $_SESSION['start_sesji'];
 				((h >= 1)?h+":":"") +
 				((m < 10)?(m == 0)?"00":"0"+m:m) + ":" + 
 				((s < 10)?(s == 0)?"00":"0"+s:s);
-			}, 1000);
+			}
 
 			document.addEventListener("mousemove",ResetNieaktywnosci)
 			function ResetNieaktywnosci() {
