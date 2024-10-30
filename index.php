@@ -31,7 +31,9 @@ $x = $_SESSION['start_sesji'];
         <!-- Liczenie czasu -->
 		<script>
 			const d = new Date();
+			console.log(d.getTime());
 			const startCzasu = <?php echo $x; ?>;
+			console.log(startCzasu);
 			const czasObj = document.getElementById("czas");
 			czasNieaktywnosci = czas;
 
