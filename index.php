@@ -29,6 +29,10 @@ $x = $_SESSION['start_sesji'];
 	<main>
         <h2>Lista Pracowników i Czas Pracy</h2>
         <!-- Liczenie czasu -->
+		<script>
+			var d = new Date();
+			const startCzasu = <?php echo $x; ?>;
+		</script>
 		<script src="javascript/licznikCzasu.js"></script>
 
         <!-- Tabela -->
