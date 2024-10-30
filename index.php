@@ -39,19 +39,22 @@ $x = $_SESSION['start_sesji'];
 			const xddd = setInterval(LiczCzas, 1000);
 
 			function LiczCzas() {
+                const czasTeraz = d.getTime(); // Aktualny czas w milisekundach
+                const roznica = czasTeraz - czasNieaktywnosci; // Czas nieaktywności
+
 				// nieaktywnosc
-				if (d.getTime() -= czasNieaktywnosci >= 600*1000) {
-                    console.log(`d.getTime(): ${d.getTime()} | czasNieaktywnosci: ${czasNieaktywnosci} | diff: ${d.getTime() -= czasNieaktywnosci}`)
+				if (roznica >= 600*1000) {
+                    console.log(`d.getTime(): ${d.getTime()} | czasNieaktywnosci: ${czasNieaktywnosci} | diff: ${d.getTime() -= czasNieaktywnosci}`);
 					clearInterval(xddd);
                     setTimeout(Logout,1000);
 				}
 
 				// czas
-				czas = Math.floor(d.getTime()*1000) - startCzasu;
+				let czas = Math.floor(d.getTime()*1000) - startCzasu;
                 console.log(`Math.floor(d.getTime()*1000): ${Math.floor(d.getTime()*1000)} | startCzasu: ${startCzasu} | diff: ${Math.floor(d.getTime()*1000) - startCzasu}`)
-				h = Math.floor(czas/60/60);
-				m = Math.floor(czas/60%60);
-				s = czas%60;
+				let h = Math.floor(czas/60/60);
+				let m = Math.floor(czas/60%60);
+				let s = czas%60;
 				czasObj.innerHTML = "Czas sesji: "+ 
 				((h >= 1)?h+":":"") +
 				((m < 10)?(m == 0)?"00":"0"+m:m) + ":" + 
