@@ -15,7 +15,7 @@ session_start();
     </header>
 	<main>
         <!-- Logowanie -->
-	<?php include 'php/logowanie/zaloguj.php';?>
+	<?php include 'logowanie/zaloguj.php';?>
     </main>
 </body>
 </html>
