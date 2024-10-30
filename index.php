@@ -31,11 +31,9 @@ $x = $_SESSION['start_sesji'];
         <!-- Liczenie czasu -->
 		<script>
 			const d = new Date();
-			console.log(d.getTime());
 			const startCzasu = <?php echo $x; ?>;
-			console.log(startCzasu);
 			const czasObj = document.getElementById("czas");
-			czasNieaktywnosci = czas;
+			czasNieaktywnosci = d.getTime();
 
 			LiczCzas();
 			setInterval(LiczCzas, 1000);
@@ -47,7 +45,7 @@ $x = $_SESSION['start_sesji'];
 				}
 
 				// czas
-				czas = Math.floor((d.getTime() - startCzasu)/1000);
+				czas = Math.floor(d.getTime()*1000) - startCzasu;
 				h = Math.floor(czas/60/60);
 				m = Math.floor(czas/60%60);
 				s = czas%60;
