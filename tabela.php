@@ -22,8 +22,16 @@
             <!-- Liczenie czasu -->
 			<script>
 				czas = 0;
+				czasNieaktywnosci = 0;
 				const czasObj = document.getElementById("czas");
-				setInterval(function() { 
+				setInterval(function() {
+					// nieaktywnosc
+					czasNieaktywnosci++;
+					if (czasNieaktywnosci >= 600) {
+						// log out
+					}
+
+					// czas
 					czas++;
 					h = Math.floor(czas/60/60);
 					m = Math.floor(czas/60%60);
@@ -33,28 +41,52 @@
 					((m < 10)?(m == 0)?"00":"0"+m:m) + ":" + 
 					((s < 10)?(s == 0)?"00":"0"+s:s);
 				}, 1000);
+				document.addEventListener("mousemove",ResetNieaktywnosci)
+				function ResetNieaktywnosci() {
+					czasNieaktywnosci = 0;
+				}
 			</script>
 
         	<!-- Tabela -->
 			<?php
-				$idp = mysqli_connect("localhost","website","mySmGZ@04d5*J85o","pracownicy");
-				
-				$idd = mysqli_query($idp,"SELECT * FROM pracownicy");
-				$code = "<table><tr><th>
-						ID
-					</th><th>
-						Imie
-					</th><th>
-						Nazwisko
-					</th><th>
-						Godziny pracy
-					</th></tr></table";
-				while ($row= mysqli_fetch_row($idd)) {
-				$code .= "<tr><td>$row[3]</td><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td></tr>";
+			if (isset($_POST)) {
+				$idp = mysqli_connect("localhost","website","mySmGZ@04d5*J85o","pracownicy") or die("Nie udalo sie polaczyc z baza danych pracownicy");
+
+				$idd = mysqli_query($idp,"SELECT * FROM uzytkownicy WHERE Login=".$_POST['login']." and Haslo=".$_POST['pass']);
+				$user = mysqli_fetch_assoc($idd);
+
+				if ($user) {
+					$idd = mysqli_query($idp,"SELECT * FROM pracownicy");
+					$code = "<table><tr><th>
+							ID
+						</th><th>
+							Imie
+						</th><th>
+							Nazwisko
+						</th><th>
+							Godziny pracy
+						</th></tr></table";
+					while ($row= mysqli_fetch_row($idd)) {
+						$code .= "<tr><td>$row[3]</td><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td></tr>";
+					}
+					$code .= "</table>";
+					echo $code;
+				} else{
+					echo "nie istnieje taki uzytkownik";
+					NoLogin();
 				}
-				$code .= "</table>";
-				echo $code;
+				mysqli_close($idp);
+			} else{
+				NoLogin();
+			}
+			function NoLogin() {
+				echo '<form action="tabela.php" method="POST">
+					<input type="text" name="login" id="login" required>
+					<input type="password" name="pass" id="pass" required>
+				</form>';
+			}
 			?>
+			
     </main>
 </body>
 </html>
