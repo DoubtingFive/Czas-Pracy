@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['login'], $_SESSION['start_sesji'])) {
-	header("Location: login.php");
+	header("Location: php/login.php");
 }
 $x = $_SESSION['start_sesji'];
 ?>
@@ -69,7 +69,7 @@ $x = $_SESSION['start_sesji'];
 			}
 			
 			function Logout() {
-				location.replace("logout.php");
+				location.replace("php/logowanie/wylogowanie.php");
 			}
 		</script>
 
