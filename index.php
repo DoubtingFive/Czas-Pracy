@@ -69,7 +69,7 @@ if (!isset($_SESSION['login'])) {
 				ID</th><th>
 				Imie</th><th>
 				Nazwisko</th><th>
-				Godziny pracy</th></tr></table>";
+				Godziny pracy</th></tr>";
 			while ($row= mysqli_fetch_row($idd)) {
 				$code .= "<tr><td>$row[3]</td><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td></tr>";
 			}
