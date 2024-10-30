@@ -25,6 +25,7 @@ session_start();
 
 			if ($user) {
 				$_SESSION['login'] = $user['Login'];
+				$_SESSION['start_sesji'] = time();
 				header("Location:index.php");
 			} else{
 				echo "Nie istnieje taki użytkownik.";
