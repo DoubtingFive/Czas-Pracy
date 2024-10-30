@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($user) {
 		$_SESSION['login'] = $user['Login'];
 		$_SESSION['start_sesji'] = time();
-		header("Location:index.php");
+		header("Location:../../index.php");
 	} else{
 		echo "Nie istnieje taki użytkownik.";
 		NoLogin();
