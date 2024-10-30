@@ -15,7 +15,7 @@ if (!isset($_SESSION['login'])) {
 </head>
 <body>
 	<p style="position:absolute;" id="czas">Czas sesji: 00:00</p>
-	<button id="logout" style="position:absolute;right:0px;" onclick="Logout();"></button>
+	<button id="logout" style="position:absolute;right:0px;" onclick="Logout();">Wyloguj się</button>
     <header>
         <h1>Czas Pracy Pracowników</h1>
     </header>
@@ -28,8 +28,9 @@ if (!isset($_SESSION['login'])) {
 	<main>
         <h2>Lista Pracowników i Czas Pracy</h2>
         <!-- Liczenie czasu -->
-		<script>
-			czas = 0;
+		<?php
+		echo "<script> czas = ".$_SESSION['czas'];
+		?>
 			czasNieaktywnosci = 0;
 			const czasObj = document.getElementById("czas");
 			setInterval(function() {
