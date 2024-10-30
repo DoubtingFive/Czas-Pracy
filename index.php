@@ -3,6 +3,7 @@ session_start();
 if (!isset($_SESSION['login'], $_SESSION['czas'])) {
 	header("Location: login.php");
 }
+$x = time() - $_SESSION['session_start_time'];
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +30,7 @@ if (!isset($_SESSION['login'], $_SESSION['czas'])) {
         <h2>Lista Pracowników i Czas Pracy</h2>
         <!-- Liczenie czasu -->
 		<script>
-			czas = <?php echo time() - $_SESSION['session_start_time']; ?>
+			var czas = <?php echo $x; ?>;
 			const czasObj = document.getElementById("czas");
 			czasNieaktywnosci = 0;
 
