@@ -40,19 +40,19 @@ $x = $_SESSION['start_sesji'];
 
 			function LiczCzas() {
                 d = new Date();
-                const czasTeraz = d.getTime(); // Aktualny czas w milisekundach
-                const roznica = czasTeraz - czasNieaktywnosci; // Czas nieaktywności
+                const czasTeraz = d.getTime();
+                const roznica = czasTeraz - czasNieaktywnosci;
 
 				// nieaktywnosc
+                console.log(`d.getTime(): ${d.getTime()} | czasNieaktywnosci: ${czasNieaktywnosci} | diff: ${d.getTime() -= czasNieaktywnosci}`);
 				if (roznica >= 600*1000) {
-                    console.log(`d.getTime(): ${d.getTime()} | czasNieaktywnosci: ${czasNieaktywnosci} | diff: ${d.getTime() -= czasNieaktywnosci}`);
+                    console.log(`nastepuje wylogowywanie`);
 					clearInterval(xddd);
                     setTimeout(Logout,1000);
 				}
 
 				// czas
 				let czas = Math.floor(d.getTime()/1000) - startCzasu;
-                console.log(`Math.floor(d.getTime()/1000): ${Math.floor(d.getTime()/1000)} | startCzasu: ${startCzasu} | diff: ${Math.floor(d.getTime()/1000) - startCzasu}`)
 				let h = Math.floor(czas/60/60);
 				let m = Math.floor(czas/60%60);
 				let s = czas%60;
