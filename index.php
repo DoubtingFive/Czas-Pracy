@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['login'], $_SESSION['start_sesji'])) {
 	header("Location: login.php");
 }
-$x = time() - $_SESSION['start_sesji'];
+$x = $_SESSION['start_sesji'];
 ?>
 
 <!DOCTYPE html>
@@ -30,22 +30,22 @@ $x = time() - $_SESSION['start_sesji'];
         <h2>Lista Pracowników i Czas Pracy</h2>
         <!-- Liczenie czasu -->
 		<script>
-			var czas = <?php echo $x; ?>;
+			const d = new Date();
+			const startCzasu = <?php echo $x; ?>;
 			const czasObj = document.getElementById("czas");
-			czasNieaktywnosci = 0;
+			czasNieaktywnosci = czas;
 
 			LiczCzas();
 			setInterval(LiczCzas, 1000);
 
 			function LiczCzas() {
 				// nieaktywnosc
-				czasNieaktywnosci++;
-				if (czasNieaktywnosci >= 600) {
+				if (czasNieaktywnosci -= d.getTime() >= 600*1000) {
 					Logout();
 				}
 
 				// czas
-				czas++;
+				czas = Math.floor((d.getTime() - startCzasu)/1000);
 				h = Math.floor(czas/60/60);
 				m = Math.floor(czas/60%60);
 				s = czas%60;
@@ -57,7 +57,7 @@ $x = time() - $_SESSION['start_sesji'];
 
 			document.addEventListener("mousemove",ResetNieaktywnosci)
 			function ResetNieaktywnosci() {
-				czasNieaktywnosci = 0;
+				czasNieaktywnosci = d.getTime();
 			}
 			
 			function Logout() {
