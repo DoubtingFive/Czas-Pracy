@@ -77,6 +77,7 @@
 				}
 				mysqli_close($idp);
 			} else{
+				echo "Nie istnieje taki uzytkownik";
 				NoLogin();
 			}
 			function NoLogin() {
