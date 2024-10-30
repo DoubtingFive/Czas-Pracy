@@ -32,5 +32,5 @@ function ResetNieaktywnosci() {
 }
 
 function Logout() {
-	location.replace("php/logowanie/wylogowanie.php");
+	location.replace("php/logowanie/wyloguj.php");
 }
