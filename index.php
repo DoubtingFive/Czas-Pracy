@@ -31,23 +31,24 @@ $x = $_SESSION['start_sesji'];
         <!-- Liczenie czasu -->
 		<script>
 			const d = new Date();
-            console.log(d.getTime())
 			const startCzasu = <?php echo $x; ?>;
-            console.log(startCzasu)
 			const czasObj = document.getElementById("czas");
 			czasNieaktywnosci = d.getTime();
 
 			LiczCzas();
-			setInterval(LiczCzas, 1000);
+			const xddd = setInterval(LiczCzas, 1000);
 
 			function LiczCzas() {
 				// nieaktywnosc
-				if (czasNieaktywnosci -= d.getTime() >= 600*1000) {
-					Logout();
+				if (d.getTime() -= czasNieaktywnosci >= 600*1000) {
+                    console.log(`d.getTime(): ${d.getTime()} | czasNieaktywnosci: ${czasNieaktywnosci} | diff: ${d.getTime() -= czasNieaktywnosci}`)
+					clearInterval(xddd);
+                    setTimeout(Logout,1000);
 				}
 
 				// czas
 				czas = Math.floor(d.getTime()*1000) - startCzasu;
+                console.log(`Math.floor(d.getTime()*1000): ${Math.floor(d.getTime()*1000)} | startCzasu: ${startCzasu} | diff: ${Math.floor(d.getTime()*1000) - startCzasu}`)
 				h = Math.floor(czas/60/60);
 				m = Math.floor(czas/60%60);
 				s = czas%60;
