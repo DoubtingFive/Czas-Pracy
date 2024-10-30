@@ -1,5 +1,5 @@
 <?php
-if (!isset($_SESSION["Login"])) {
+if (!isset($_SESSION['login'])) {
 	header("Location: login.php");
 }
 ?>
