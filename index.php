@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['login'])) {
+if (!isset($_SESSION['login'], $_SESSION['czas'])) {
 	header("Location: login.php");
 }
 ?>
@@ -30,9 +30,8 @@ if (!isset($_SESSION['login'])) {
         <!-- Liczenie czasu -->
 		<script>const czasObj = document.getElementById("czas");</script>
 		<?php
-			$czas = $_SESSION['czas'];
 			function Loop(): never {
-				$czas = 0;
+				$czas = $_SESSION['czas'];
 				while(true)
 				{
 					$czas++;
