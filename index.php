@@ -23,14 +23,14 @@
             
             $idd = mysqli_query($idp,"SELECT * FROM pracownicy");
             $code = "<table><tr><th>
-              ID
-            </th><th>
-              Imie
-            </th><th>
-              Nazwisko
-            </th><th>
-              Godziny pracy
-            </th></tr></table";
+					ID
+				</th><th>
+					Imie
+				</th><th>
+					Nazwisko
+				</th><th>
+					Godziny pracy
+				</th></tr></table";
             while ($row= mysqli_fetch_row($idd)) {
               $code .= "<tr><td>$row[3]</td><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td></tr>";
             }
