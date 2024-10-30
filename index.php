@@ -30,7 +30,7 @@ $x = $_SESSION['start_sesji'];
         <h2>Lista Pracowników i Czas Pracy</h2>
         <!-- Liczenie czasu -->
 		<script>
-			const d = new Date();
+			var d = new Date();
 			const startCzasu = <?php echo $x; ?>;
 			const czasObj = document.getElementById("czas");
 			czasNieaktywnosci = d.getTime();
@@ -39,6 +39,7 @@ $x = $_SESSION['start_sesji'];
 			const xddd = setInterval(LiczCzas, 1000);
 
 			function LiczCzas() {
+                d = new Date();
                 const czasTeraz = d.getTime(); // Aktualny czas w milisekundach
                 const roznica = czasTeraz - czasNieaktywnosci; // Czas nieaktywności
 
@@ -63,6 +64,7 @@ $x = $_SESSION['start_sesji'];
 
 			document.addEventListener("mousemove",ResetNieaktywnosci)
 			function ResetNieaktywnosci() {
+                d = new Date();
 				czasNieaktywnosci = d.getTime();
 			}
 			
