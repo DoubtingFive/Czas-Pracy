@@ -24,7 +24,7 @@ session_start();
 			mysqli_close($idp);
 
 			if ($user) {
-				$_SESSION["Login"] = $user['Login'];
+				$_SESSION['login'] = $user['Login'];
 				header("Location:index.php");
 			} else{
 				echo "Nie istnieje taki użytkownik.";
