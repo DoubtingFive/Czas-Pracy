@@ -81,8 +81,9 @@
 			}
 			function NoLogin() {
 				echo '<form action="tabela.php" method="POST">
-					<input type="text" name="login" id="login" required>
-					<input type="password" name="pass" id="pass" required>
+					<input type="text" name="login" id="login" required><br><br>
+					<input type="password" name="pass" id="pass" required><br><br>
+					<input type="submit" value="Zaloguj">
 				</form>';
 			}
 			?>
