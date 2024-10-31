@@ -47,7 +47,7 @@ div > fieldset {
     box-sizing: border-box;
 }
 #kontent {
-    padding: 0 1%;
+    padding: 1%;
     width: 74.5%;
     height: 84vh;
     min-height: 84vh;
@@ -150,6 +150,7 @@ img{
     position: absolute;
     left:6%;
     top:8vh;
+    height: 8vh
 }
 a {
     color: rgb(200, 200, 200);
