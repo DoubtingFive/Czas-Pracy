@@ -16,14 +16,14 @@ $y = $_SESSION['login'];
     <link rel="stylesheet" href="style/styl.css?v=1.1">
 </head>
 <body>
-    <img src="" alt="logo">
+	<button id="logout" style="position:absolute;" onclick="Logout();">Wyloguj się</button>
+	<p style="position:absolute;" id="czas">Czas sesji: 00:00</p>
+    <img src="" style="right:10%" alt="logo">
     <div id="calosc">
         <div id="baner">
             <h1 id="tytul">Czas pracy</h1>
         </div>
         <div id="nawigacja">
-	<button id="logout" style="position:absolute;" onclick="Logout();">Wyloguj się</button>
-	<p style="position:absolute;" id="czas">Czas sesji: 00:00</p>
 			<fieldset>
                 <legend>Nawigacja</legend>
                 <br>
