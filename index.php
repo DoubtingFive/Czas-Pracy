@@ -18,7 +18,7 @@ $y = $_SESSION['login'];
 <body>
 	<button id="logout" onclick="Logout();">Wyloguj się</button>
 	<p class="czas" id="czas">Czas sesji: 00:00</p>
-    <img src="grafika/tlo.png" alt="logo">
+    <img src="grafika/logopoprw.png" alt="logo">
     <div id="calosc">
         <div id="baner">
             <h1 id="tytul">Czas pracy</h1>
