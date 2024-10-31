@@ -11,6 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	if ($user) {
 		$_SESSION['login'] = $user['Login'];
 		$_SESSION['start_sesji'] = time();
+		$_SESSION['is_admin'] = $user['isAdmin'];
 		header("Location:../../index.php");
 	} else{
 		echo "Nie istnieje taki użytkownik.";
