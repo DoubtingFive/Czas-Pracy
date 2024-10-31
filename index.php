@@ -13,7 +13,7 @@ $y = $_SESSION['login'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Czas pracy</title>
-    <link rel="stylesheet" href="style/styl.css?v=1.2">
+    <link rel="stylesheet" href="style/styl.css?v=1.3">
 </head>
 <body>
 	<button id="logout" onclick="Logout();">Wyloguj się</button>
