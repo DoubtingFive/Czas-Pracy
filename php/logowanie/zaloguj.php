@@ -17,9 +17,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 function NoLogin() {
 	echo '<form action="login.php" method="POST">
-		<input type="text" name="login" id="login" required><br><br>
-		<input type="password" name="pass" id="pass" required><br><br>
-		<input type="submit" value="Zaloguj">
-	</form>';
+                <label>Login</label>
+                <input type="text" name="login" id="login" required>
+                <label>Hasło</label>
+                <input type="password" name="pass" id="pass" required>
+                <input type="submit" value="Zaloguj">
+            </form>';
 }
 ?>
