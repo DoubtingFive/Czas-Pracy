@@ -3,6 +3,7 @@
     box-sizing: border-box;
 }
 body {
+    overflow: hidden;
     margin: 0;
     background-image: url(../grafika/tlo.png),linear-gradient(purple, navy);
     background-attachment: fixed;
@@ -29,6 +30,7 @@ div > fieldset {
 }
 
 #baner {
+    padding:1%;
     width: 99.5%;
     height: 13vh;
     font-size: 1.7em;
@@ -78,21 +80,14 @@ div > fieldset {
     float: left;
 }
 #administracja {
-    width: 100px;
-    height: 35px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    background-color: rgb(80, 80, 80);
+    width: 98.5%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border:3px solid white;
     position: fixed;
-    bottom: -0.5vh;
-    left: 50%;
-    transform: translateX(-50%);
-}
-#administracja:hover {
-    background-color: rgb(100, 100, 100);
-    animation-name: animacjaAdministracja;
-    animation-fill-mode: forwards;
-    animation-duration: 0.3s;
+    border-radius: 40px;
+    bottom: -30vh;
+    height: 30vh;
+    padding:2%;
 }
 @keyframes animacjaAdministracja {
     0% { height: 35px; }
@@ -115,7 +110,7 @@ th{
     padding:10px;
     background-color: rgba(0,0,0,0.5);
 }
-button{
+button#logout{
     position:absolute;
     left:1%;
     top:-1vh;
@@ -129,6 +124,23 @@ button{
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
+}
+button#adminPanel{
+    width: 100px;
+    height: 35px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background-color: rgb(80, 80, 80);
+    position: absolute;
+    bottom: -5vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+button#adminPanel:hover{
+    background-color: rgb(100, 100, 100);
+    animation-name: animacjaAdministracja;
+    animation-fill-mode: forwards;
+    animation-duration: 0.3s;
 }
 img{
     position: absolute;
