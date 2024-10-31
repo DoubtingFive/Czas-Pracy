@@ -1,9 +1,5 @@
-﻿<?php
-session_start();
-if (!isset($_SESSION['login'], $_SESSION['start_sesji'], $_SESSION['is_admin'])) {
-	header("Location: php/logowanie/login.php");
-}
-if ($_SESSION['isAdmin']) {
+<?php
+if ($_SESSION['is_admin']) {
     echo `
     <div>
         <button id="adminPanel" onclick="RozwinPanelAdmina(this);"></button>
