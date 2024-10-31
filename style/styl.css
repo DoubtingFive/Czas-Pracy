@@ -4,7 +4,7 @@
 }
 body {
     margin: 0;
-    background-image: linear-gradient(purple, navy),url(../grafika/tlo.png);
+    background-image: url(../grafika/tlo.png),linear-gradient(purple, navy);
     background-attachment: fixed;
     color: white;
 }
