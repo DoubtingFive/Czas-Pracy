@@ -62,6 +62,18 @@ img{
     height: 84vh;
     float: left;
 }
+table{
+    border-collapse: collapse;
+    width:100%
+}
+td{
+    padding:10px;
+    border: 1px solid white;
+}
+th{
+    padding:10px;
+    background-color: rgba(0,0,0,0.5);
+}
 #administracja {
     width: 100px;
     height: 35px;
