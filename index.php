@@ -13,12 +13,12 @@ $y = $_SESSION['login'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Czas pracy</title>
-    <link rel="stylesheet" href="style/styl.css?v=1.1">
+    <link rel="stylesheet" href="style/styl.css?v=1.2">
 </head>
 <body>
 	<button id="logout" style="position:absolute;left:1%" onclick="Logout();">Wyloguj się</button>
 	<p style="position:absolute;left:1%" id="czas">Czas sesji: 00:00</p>
-    <img src="" style="left:10%;top:6vh" alt="logo">
+    <img src="" alt="logo">
     <div id="calosc">
         <div id="baner">
             <h1 id="tytul">Czas pracy</h1>
@@ -36,7 +36,7 @@ $y = $_SESSION['login'];
                 <a href="#ustawienia">Ustawienia</a><br>
             </fieldset>
         </div>
-        <div id="kontent" style="overflow-y:auto;height:84vh">
+        <div id="kontent">
             <h2>Lista Pracowników i Czas Pracy</h2>
             <!-- Liczenie czasu -->
             <script>
