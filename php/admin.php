@@ -1,5 +1,5 @@
 <?php
-if ($_SESSION['is_admin'] === '1') {
+if ((bool)$_SESSION['is_admin']) {
     echo `
     <div>
         <button id="adminPanel" onclick="RozwinPanelAdmina(this);"></button>
