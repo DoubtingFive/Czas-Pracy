@@ -64,6 +64,7 @@ img{
     float: left;
 }
 table{
+    border: 1px solid white;
     border-collapse: collapse;
     width:100%
 }
