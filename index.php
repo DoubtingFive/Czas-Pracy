@@ -13,7 +13,7 @@ $y = $_SESSION['login'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Czas pracy</title>
-    <link rel="stylesheet" href="style/styl.css">
+    <link rel="stylesheet" href="style/styl.css?v=1.1">
 </head>
 <body>
 	<p style="position:absolute;" id="czas">Czas sesji: 00:00</p>
