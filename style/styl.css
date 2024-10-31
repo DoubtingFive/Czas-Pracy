@@ -40,8 +40,8 @@ div > fieldset {
 }
 img{
     position: absolute;
-    left:3%;
-    top:4vh
+    left:12%;
+    top:8vh;
 }
 #nawigacja {
     width: 14.5%;
@@ -52,10 +52,11 @@ img{
 #kontent {
     padding: 0 1%;
     width: 74.5%;
-    height: auto;
+    height: 84vh;
     min-height: 84vh;
     float: left;
     color: white;
+    overflow-y:auto;
 }
 #ustawienia {
     width: 9.5%;
