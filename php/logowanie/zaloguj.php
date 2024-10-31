@@ -4,7 +4,7 @@ $pass = null;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$user = $_POST['login'];
 	$pass = $_POST['pass'];
-	$idp = mysqli_connect("localhost","website","mySmGZ@04d5*J85o","pracownicy") or die("Nie udalo sie polaczyc z baza danych pracownicy");
+	$idp = mysqli_connect("localhost","website","5mu4fDGv_Q58NbXV","pracownicy") or die("Nie udalo sie polaczyc z baza danych pracownicy");
 	$idd = mysqli_query($idp,"SELECT * FROM uzytkownicy WHERE Login='". $user ."' AND Haslo='".$pass."';");
 	$user = mysqli_fetch_assoc($idd);
 	mysqli_close($idp);
