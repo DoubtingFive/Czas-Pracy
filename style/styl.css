@@ -38,11 +38,6 @@ div > fieldset {
     margin:0;
     text-align: right;
 }
-img{
-    position: absolute;
-    left:12%;
-    top:8vh;
-}
 #nawigacja {
     width: 14.5%;
     height: 84vh;
@@ -62,19 +57,6 @@ img{
     width: 9.5%;
     height: 84vh;
     float: left;
-}
-table{
-    border: 1px solid white;
-    border-collapse: collapse;
-    width:100%
-}
-td{
-    padding:10px;
-    border: 1px solid white;
-}
-th{
-    padding:10px;
-    background-color: rgba(0,0,0,0.5);
 }
 #administracja {
     width: 100px;
@@ -96,6 +78,43 @@ th{
 @keyframes animacjaAdministracja {
     0% { height: 35px; }
     100% { height: 45px; }
+}
+.czas{
+    position:absolute;
+    left:8%;
+}
+table{
+    border: 1px solid white;
+    border-collapse: collapse;
+    width:100%
+}
+td{
+    padding:10px;
+    border: 1px solid white;
+}
+th{
+    padding:10px;
+    background-color: rgba(0,0,0,0.5);
+}
+button{
+    position:absolute;
+    left:1%;
+    top:-1vh;
+    padding: 10px;
+    margin-top: 1.5em;
+    background-color: #6a5acd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+img{
+    position: absolute;
+    left:6%;
+    top:8vh;
 }
 a {
     color: rgb(200, 200, 200);
