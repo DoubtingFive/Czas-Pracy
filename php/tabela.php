@@ -1,5 +1,5 @@
 <?php
-	$idp = mysqli_connect("localhost","website","mySmGZ@04d5*J85o","pracownicy") or die("Nie udalo sie polaczyc z baza danych pracownicy");
+	$idp = mysqli_connect("localhost","website","5mu4fDGv_Q58NbXV","pracownicy") or die("Nie udalo sie polaczyc z baza danych pracownicy");
 
 	$idd = mysqli_query($idp,"SELECT * FROM pracownicy");
 	$code = "<table><tr><th>
