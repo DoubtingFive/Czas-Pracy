@@ -22,8 +22,8 @@ $y = $_SESSION['login'];
             <h1 id="tytul">Czas pracy</h1>
         </div>
         <div id="nawigacja">
-	<button id="logout" style="position:absolute;right:0px;" onclick="Logout();">Wyloguj się</button>
-	<p style="position:absolute;right:0px" id="czas">Czas sesji: 00:00</p>
+	<button id="logout" style="position:absolute;" onclick="Logout();">Wyloguj się</button>
+	<p style="position:absolute;" id="czas">Czas sesji: 00:00</p>
 			<fieldset>
                 <legend>Nawigacja</legend>
                 <br>
