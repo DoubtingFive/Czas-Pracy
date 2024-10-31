@@ -63,6 +63,7 @@ form input[type="submit"]:hover {
     top: 5vh;
     width: 40.5%;
     min-height: 50vh;
+    height:50vh
 }
 fieldset{
     height: 48.5vh;
