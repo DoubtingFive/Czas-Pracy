@@ -36,7 +36,7 @@ $y = $_SESSION['login'];
                 <a href="#ustawienia">Ustawienia</a><br>
             </fieldset>
         </div>
-        <div id="kontent">
+        <div id="kontent" style="overflow:auto;">
             <h2>Lista Pracowników i Czas Pracy</h2>
             <!-- Liczenie czasu -->
             <script>
