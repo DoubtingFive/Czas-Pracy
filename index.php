@@ -16,7 +16,7 @@ $y = $_SESSION['login'];
     <link rel="stylesheet" href="style/styl.css">
 </head>
 <body>
-    <img src="" alt="logo">
+    <img src="grafika/background.jpg" alt="logo">
     <div id="calosc">
         <div id="baner">
             <h1 id="tytul">Czas pracy</h1>
