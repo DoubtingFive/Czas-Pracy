@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['login'], $_SESSION['start_sesji'])) {
+if (!isset($_SESSION['login'], $_SESSION['start_sesji'], $_SESSION['is_admin'])) {
 	header("Location: php/logowanie/login.php");
 }
 $x = $_SESSION['start_sesji'];
