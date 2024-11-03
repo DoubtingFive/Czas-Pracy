@@ -66,9 +66,9 @@ form input[type="submit"]:hover {
     height:50vh
 }
 fieldset{
-    height: 48.5vh;
-    min-height: 48.5vh;
-    max-height: 48.5vh;
+    height: 45vh;
+    min-height: 45vh;
+    max-height: 45vh;
 }
 div fieldset legend{
     font-size: 3.5em;
