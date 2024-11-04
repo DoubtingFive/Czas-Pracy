@@ -61,10 +61,12 @@ $y = $_SESSION['login'];
                         <option>250</option>
                         <option>500</option>
                     </select>
+                    <label>Godziny pracy:</label>
+                    <input type="number" oninput="FilterHours(this.value);">
                 </form>
             </fieldset>
         </div>
-        <script src="javascript/limitRekordów.js"></script>
+        <script src="javascript/filtry.js"></script>
         <?php include 'php/admin.php';?>
     </div>
 </body>
