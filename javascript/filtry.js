@@ -13,16 +13,22 @@ function RecordLimit(records) {
     pagesCount = 0;
     pagesModulo = 0;
 
-    recordLimit = showRecords = records;
+    let showRecords = recordLimit = records;
     _tableValue = filteredValue.split("</tr>");
 
     if (records > _tableValue.length-2) showRecords = _tableValue.length-2;
-    if (records == _tableValue.length-2) page = 0; pagesCount = 1; pagesModulo = 0; pageDropdown.style.display = "none";
+    if (records == _tableValue.length-2) {
+        page = 0;
+        pagesCount = 1;
+        pagesModulo = 0;
+        pageDropdown.style.display = "none";
+    }
+
     if (records < _tableValue.length-2) {
         pagesCount = Math.floor((_tableValue.length-2)/records)
         pagesModulo = (_tableValue.length-2)%records
-        code = ""
-        for (i=1;i<pagesCount+1;i++) {
+        let code = ""
+        for (i=1;i<pagesCount+1+(pagesModulo>0)?1:0;i++) {
             code += "<option>"+i+"</option>";
         }
         pageDropdown.style.display = "block";
@@ -30,7 +36,7 @@ function RecordLimit(records) {
         pageDropdown.value = Math.round(page+1);
     }
     
-    tableScore = _tableValue[0];
+    let tableScore = _tableValue[0] + "</tr>";
     for (i=Math.round(page*records)+1;i<=Math.round(parseInt(showRecords)+(page*records));i++) {
         if (_tableValue[i] != undefined)
             tableScore +=_tableValue[i] + "</tr>";
@@ -41,7 +47,7 @@ function RecordLimit(records) {
 function FilterHours(filter) {
     _tableValue = tableValue.split("</tr>");
 
-    filteredValue = _tableValue[0];
+    filteredValue = _tableValue[0] + "</tr>";
 
     for (i=1;i<_tableValue.length-1;i++) {
         if (_tableValue[i].search("<td>") == -1) break;
