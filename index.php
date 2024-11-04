@@ -13,7 +13,7 @@ $y = $_SESSION['login'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Czas pracy</title>
-    <link rel="stylesheet" href="style/styl.css?v=1.3">
+    <link rel="stylesheet" href="style/styl.css?v=1.4">
 </head>
 <body>
 	<button id="logout" onclick="Logout();">Wyloguj się</button>
@@ -48,11 +48,23 @@ $y = $_SESSION['login'];
             <!-- Tabela -->
             <?php include 'php/tabela.php';?>
         </div>
-        <div id="ustawienia">
-	<fieldset>
-                <legend>Ustawienia</legend>
+        <div id="filtry">
+	        <fieldset>
+                <legend>Filtry</legend>
+                <form name="filtry">
+                    <label>Wyświetlanych rekordów:</label>
+                    <select name="rec" id="rec" onchange="RecordLimit(this.value);">
+                        <option>10</option>
+                        <option selected>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                        <option>250</option>
+                        <option>500</option>
+                    </select>
+                </form>
             </fieldset>
         </div>
+        <script src="javascript/limitRekordów.js"></script>
         <?php include 'php/admin.php';?>
     </div>
 </body>
