@@ -62,8 +62,11 @@ $y = $_SESSION['login'];
                         <option>500</option>
                     </select>
                     <label>Godziny pracy:</label>
-                    <input type="number" oninput="FilterHours(this.value);">
-                </form>
+                    <input type="number" name="hours" id="hours" oninput="FilterHours(this.value);"><br>
+                </form><br>
+                <button name="pageDown" id="pageDown" onclick="ChangePage(-1)"><-</button>
+                <select name="page" id="page" onchange="ChangePage(this.value,true)"></select>
+                <button name="pageUp" id="pageUp" onclick="ChangePage(1)">-></button>
             </fieldset>
         </div>
         <script src="javascript/filtry.js"></script>
