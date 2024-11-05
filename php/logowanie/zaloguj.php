@@ -1,17 +1,19 @@
 <?php
-$user = null;
+$login = null;
 $pass = null;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$user = $_POST['login'];
+	$login = $_POST['login'];
 	$pass = $_POST['pass'];
 	$idp = mysqli_connect("localhost","website","5mu4fDGv_Q58NbXV","pracownicy") or die("Nie udalo sie polaczyc z baza danych pracownicy");
-	$idd = mysqli_query($idp,"SELECT * FROM uzytkownicy WHERE Login='". $user ."' AND Haslo='".$pass."';");
+	$sql = "SELECT * FROM uzytkownicy WHERE login='". $login ."' AND haslo='".$pass."';";
+	$idd = mysqli_query($idp,$sql);
 	$user = mysqli_fetch_assoc($idd);
 	mysqli_close($idp);
 	if ($user) {
-		$_SESSION['login'] = $user['Login'];
+		$_SESSION['login'] = $user['imie'] . " " . $user['nazwisko'];
 		$_SESSION['start_sesji'] = time();
-		$_SESSION['is_admin'] = $user['isAdmin'];
+		$_SESSION['is_admin'] = (bool)($user['admin'] == "admin");
+		echo $user['admin']."\n".$_SESSION['is_admin'];
 		header("Location:../../index.php");
         exit();
 	} else{
