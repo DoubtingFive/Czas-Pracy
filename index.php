@@ -13,7 +13,7 @@ $y = $_SESSION['login'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Czas pracy</title>
-    <link rel="stylesheet" href="style/styl.css?v=1.4">
+    <link rel="stylesheet" href="style/styl.css?v=1.5">
 </head>
 <body>
 	<button id="logout" onclick="Logout();">Wyloguj się</button>
@@ -63,13 +63,14 @@ $y = $_SESSION['login'];
                     </select>
                     <label>Godziny pracy:</label>
                     <input type="number" name="hours" id="hours" oninput="FilterHours(this.value);"><br>
+                    <input type="date" name="data" id="data" onchange="FilterDate(this.value);"><br>
                 </form><br>
                 <button name="pageDown" id="pageDown" onclick="ChangePage(-1)"><-</button>
                 <select name="page" id="page" onchange="ChangePage(this.value,true)"></select>
                 <button name="pageUp" id="pageUp" onclick="ChangePage(1)">-></button>
             </fieldset>
         </div>
-        <script src="javascript/filtry.js"></script>
+        <script src="javascript/filtry.js?v=1.1"></script>
         <?php include 'php/admin.php';?>
     </div>
 </body>
