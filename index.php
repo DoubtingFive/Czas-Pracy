@@ -70,7 +70,7 @@ $y = $_SESSION['login'];
                 <button name="pageUp" id="pageUp" onclick="ChangePage(1)">-></button>
             </fieldset>
         </div>
-        <script src="javascript/filtry.js?v=1.1"></script>
+        <script src="javascript/filtry.js"></script>
         <?php include 'php/admin.php';?>
     </div>
 </body>
