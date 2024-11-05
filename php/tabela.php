@@ -7,10 +7,10 @@
 	$code = "<table><tr><th>
 		Imie</th><th>
 		Nazwisko</th><th>
-		Data</th></tr>
-		Godzina rozpoczęcia</th></tr>
-		Godzina zakończenia</th></tr>
-		Godzin pracy</th></tr>
+		Data</th><th>
+		Godzina rozpoczęcia</th><th>
+		Godzina zakończenia</th><th>
+		Godzin pracy</th><th>
 		Zatwierdzone</th></tr>";
 	while ($row= mysqli_fetch_row($idd)) {
 		$code .= "<tr>
