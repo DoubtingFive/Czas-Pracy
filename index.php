@@ -71,7 +71,7 @@ $y = $_SESSION['login'];
             </fieldset>
         </div>
         <script src="javascript/filtry.js"></script>
-        <?php include 'php/admin.php';?>
+        <?php include 'php/admin/admin.php';?>
     </div>
 </body>
 </html>
