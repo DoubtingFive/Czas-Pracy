@@ -45,13 +45,27 @@ function RecordLimit(records) {
     table.innerHTML = tableScore;
 }
 function FilterHours(filter) {
-    _tableValue = tableValue.split("</tr>");
+    let _tableValue = tableValue.split("</tr>");
 
     filteredValue = _tableValue[0] + "</tr>";
 
     for (i=1;i<_tableValue.length-1;i++) {
         if (_tableValue[i].search("<td>") == -1) break;
-        if (_tableValue[i].split("<td>")[4].search(filter) != -1) {
+        if (_tableValue[i].split("<td>")[6].search(filter) != -1) {
+            filteredValue += _tableValue[i] + "</tr>";
+        }
+    }
+    filteredValue += _tableValue[_tableValue.length-1];
+    RecordLimit(recordLimit)
+}
+function FilterDate(filter) {
+    let _tableValue = tableValue.split("</tr>");
+
+    filteredValue = _tableValue[0] + "</tr>";
+
+    for (i=1;i<_tableValue.length-1;i++) {
+        if (_tableValue[i].search("<td>") == -1) break;
+        if (_tableValue[i].split("<td>")[3].search(filter) != -1) {
             filteredValue += _tableValue[i] + "</tr>";
         }
     }
