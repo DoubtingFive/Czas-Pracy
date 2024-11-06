@@ -28,7 +28,8 @@ if ((bool)$_SESSION['is_admin']) {
             } elseif ($status == 'blad') {
                 echo "<p style='color: red;'>Nie udało się dodać użytkownika.</p>";
             }
-            echo '
+            echo '<br>
+            <a href="php/admin/zatwierdzanie.php">Panel Zatwierdzeń</a>
         </div>
         <script>
             const panel = document.getElementById("administracja");

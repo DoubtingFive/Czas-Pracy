@@ -12,11 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$kom = $_POST['kom'];
 	$id = explode(";",$id);
 	$idp = mysqli_connect("localhost","website","5mu4fDGv_Q58NbXV","pracownicy") or die("Nie udalo sie polaczyc z baza danych pracownicy");
-	$sql = "INSERT INTO zatwierdzenia(`pozycja_id`,	`zatwierdzone_przez`,`zatwierdzono` , `zatwierdzenie_data`, `komentarz`) VALUES ($id[0],'".$_SESSION['id']."','$id[1]','".date("Y-m-d H:i:s")."','$kom');";
+	$sql = "INSERT INTO zatwierdzenia(`pozycja_id`,	`zatwierdzone_przez`,`zatwierdzono` , `zatwierdzenie_data`, `komentarz`) VALUES ($id[0],'".$_SESSION['id']."','$id[1]','".date("Y-m-d H:i:s")."','Nieobecność. $kom');";
 	echo $sql;
 	$idd = mysqli_query($idp,$sql);
 	echo "\n$idd\n";
-	$sql = "UPDATE wpisy_pracy SET zatwierdzone=$id[1] WHERE pozycja_id='$id[0]';";
+	$sql = "UPDATE nieobecnosci SET zatwierdzone=$id[1] WHERE nieobecnosc_id='$id[0]';";
 	echo $sql;
 	$idd = mysqli_query($idp,$sql);
 	echo "\n$idd";
