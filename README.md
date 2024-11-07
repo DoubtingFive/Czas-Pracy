@@ -6,7 +6,7 @@ Baza danych: [Baza](http://93.89.197.217:8080/phpmyadmin)
 
 Test: [Strona](http://93.89.197.217:8080/Czas-Pracy/)
 
-login: admin
+login: piotr.ciosek
 
 haslo: 12345678
 
