@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	NoLogin();
 }
 function NoLogin() {
-	global $user, $pass;
+	global $login, $pass;
 	echo '<form action="login.php" method="POST">
                 <label>Login</label>
-                <input type="text" name="login" id="login" value="'.(($user != null)?$user:'').'" required>
+                <input type="text" name="login" id="login" value="'.(($login != null)?$login:'').'" required>
                 <label>Hasło</label>
                 <input type="password" name="pass" id="pass" value="'.(($pass != null)?$pass:'').'" required>
                 <input type="submit" value="Zaloguj">

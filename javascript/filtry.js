@@ -1,13 +1,23 @@
-const table = document.getElementsByTagName("table")[0];
+const wpisyTable = document.getElementById('lista-pracownikow');
+const usprTable = document.getElementById('lista-usprawiedliwien');
 const pageDropdown = document.getElementById("page");
 const dataFrom = document.getElementById("dataOd");
 const dataTo = document.getElementById("dataDo");
-const tableValue = table.innerHTML;
+const founded = document.getElementById("founded");
+const ileWpisow = wpisyTable.innerHTML.split("<tr>").length-2;
+const ileUspr = usprTable.innerHTML.split("<tr>").length-2;
+let wpisyVal = wpisyTable.innerHTML;
+let usprVal = usprTable.innerHTML;
+var table = wpisyTable;
+var tableValue = wpisyVal;
 var filteredValue = tableValue;
 var recordLimit = 25;
 var page = 0;
 var pagesCount = 0;
 var pagesModulo = 0;
+var filters = []
+var types = []
+var dates = ['']
 function RecordLimit(records) {
     if (recordLimit != records) {
         page *= recordLimit/records;
@@ -44,27 +54,52 @@ function RecordLimit(records) {
     }
 
     table.innerHTML = tableScore;
+    founded.innerText = filteredValue.split("<tr>").length-2;
 }
-function Filter(filter,type) {
+function Filter(filter,type,force = "") {
+    const index = types.indexOf(type);
+    if (index > -1) {
+        filters.splice(index, 1);
+        types.splice(index, 1);
+    }
+    if (filter != null && filter != "") {
+        filter += force;
+        filters.push(filter);
+        types.push(type);
+    }
     let _tableValue = tableValue.split("</tr>");
 
     filteredValue = _tableValue[0] + "</tr>";
 
     for (i=1;i<_tableValue.length-1;i++) {
-        if (_tableValue[i].search("<td>") == -1) break;
-        if (_tableValue[i].split("<td>")[type].search(filter) != -1) {
-            filteredValue += _tableValue[i] + "</tr>";
+        if (_tableValue[i].search("<td") == -1) continue;
+        isFiltred = false
+        for (j=0;j<filters.length;j++) {
+            if (_tableValue[i].split("<td")[types[j]].search(filters[j]) != -1) {
+                continue;
+            }
+            isFiltred = true;
         }
+        if (isFiltred) continue;
+        if (dates) isFiltred = true
+        for (j=0;j<dates.length;j++) {
+            if (_tableValue[i].split("<td")[3].search(dates[j]) != -1) {
+                isFiltred = false
+                break;
+            }
+        }
+        if (isFiltred) continue;
+        filteredValue += _tableValue[i] + "</tr>";
     }
     filteredValue += _tableValue[_tableValue.length-1];
     RecordLimit(recordLimit)
 }
 function FilterDate() {
-    let filter = [];
+    dates = []
     if (dataFrom.value != '' && dataTo.value != '') {
         fromValue = dataFrom.value;
         toValue = dataTo.value;
-        if (fromValue==toValue) filter = [fromValue];
+        if (fromValue==toValue) dates = [fromValue];
         else {
             let dataToDays = new Date(dataTo.value).getDate()-new Date(dataFrom.value).getDate();
             for (i=0;i<dataToDays+1;i++){
@@ -73,28 +108,35 @@ function FilterDate() {
                 let m = parseInt(d.getMonth()+1+(i/31%12));
                 let day = parseInt(d.getDate()+(i%31));
 
-                filter.push(`${y}-${(m<10?`0${m}`:m)}-${(day<10?`0${day}`:day)}`);
-                console.log(filter)
-                console.log(dataFrom.value)
-                console.log(`date: ${d.getFullYear()}-${d.getMonth()+1}-${d.getDate()}`)
+                dates.push(`${y}-${(m<10?`0${m}`:m)}-${(day<10?`0${day}`:day)}`);
             }
         }
-    } else 
-        filter = [(dataFrom.value != ''?dataFrom.value:dataTo.value)]
+    } else dates = [(dataFrom.value != ''?dataFrom.value:dataTo.value)]
 
     let _tableValue = tableValue.split("</tr>");
 
     filteredValue = _tableValue[0] + "</tr>";
 
     for (i=1;i<_tableValue.length-1;i++) {
-        if (_tableValue[i].search("<td>") == -1) break;
-        filter.forEach((x) => {
-            if (_tableValue[i].split("<td>")[3].search(x) != -1) {
-                filteredValue += _tableValue[i] + "</tr>";
+        if (_tableValue[i].search("<td") == -1) break;
+        isFiltred = false
+        for (j=0;j<filters.length;j++) {
+            if (_tableValue[i].split("<td")[types[j]].search(filters[j]) != -1) {
+                continue;
             }
-        });
+            isFiltred = true;
+        }
+        if (isFiltred) continue;
+        if (dates) isFiltred = true
+        for (j=0;j<dates.length;j++) {
+            if (_tableValue[i].split("<td")[3].search(dates[j]) != -1) {
+                isFiltred = false
+                break;
+            }
+        }
+        if (isFiltred) continue;
+        filteredValue += _tableValue[i] + "</tr>";
     }
-    filteredValue += _tableValue[_tableValue.length-1];
     RecordLimit(recordLimit)
 }
 function ChangePage(change,force=false) {

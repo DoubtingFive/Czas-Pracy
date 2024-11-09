@@ -41,10 +41,21 @@ $y = $_SESSION['login'];
                     <input type="submit" name="wyslij2" id="wyslij2" value="Wyślij">
                 </form><br>
                 <h1>Zmień Hasło</h1><br>
+                <?php
+                if(isset($_GET['passwd'])) {
+                    $passwd = $_GET['passwd'];
+                    if ($passwd == 'success') {
+                        echo "<p style='color:lime'>Udało się zmienić hasło</p>";
+                    } else if ($passwd == 'wrong') {
+                        echo "<p style='color:red'>Nie poprawne hasło</p>";
+                    } else {
+                        echo "<p style='color:red'>Nie udało się zmienić hasła</p>";
+                    }
+                }
+                ?>
                 <form name="haslo" method="POST" action="php/haslo.php">
                     <label>Aktualne hasło: </label><input type="password" name="password" id="password" required><br>
                     <label>Nowe hasło: </label><input type="password" name="newPassword" id="newPassword" required><br>
-                    <label>Potwierdź hasło: </label><input type="password" name="confirmPassword" id="confirmPassword" required><br>
                     <input type="submit" name="wyslij3" id="wyslij3" value="Wyślij">
                 </form>
             </fieldset>
@@ -59,40 +70,50 @@ $y = $_SESSION['login'];
     
             <!-- Tabela -->
             <button id="tabela-toggle" onclick="TableToggle();"></button>
+            <button id="confirm-all" onclick="ConfirmAll();" title="Zatwierdź wszystkie widoczne rekordy">Zatwierdź wszystko</button>
             <?php include 'php/tabela/wpisy.php';?>
             <?php include 'php/tabela/uspr.php';?>
-            <script src="javascript/przelaczTabele.js"></script>
         </div>
         <div id="filtry">
 	        <fieldset>
                 <legend>Filtry</legend>
-                <form name="filtry">
-                    <label>Wyświetlanych rekordów:</label>
-                    <select name="rec" id="rec" onchange="RecordLimit(this.value);">
-                        <option>10</option>
-                        <option selected>25</option>
-                        <option>50</option>
-                        <option>100</option>
-                        <option>250</option>
-                        <option>500</option>
-                    </select><br>
-                    <label>Godziny pracy:</label>
-                    <input type="number" name="hours" id="hours" oninput="Filter(this.value+'.00',6);"><br>
-                    <label>Godzina rozpoczęcia pracy:</label>
-                    <input type="number" name="godzina_rozpoczecia" id="godzina_rozpoczecia" oninput="Filter(this.value+':00:00',4);"><br>
-                    <label>Godzina zakończenia pracy:</label>
-                    <input type="number" name="godzina_zakonczenia" id="godzina_zakonczenia" oninput="Filter(this.value+':00:00',5);"><br>
-                    <input type="date" name="dataOd" id="dataOd" onchange="FilterDate();"> -
-                    <input type="date" name="dataDo" id="dataDo" onchange="FilterDate();"><br>
-                </form><br>
+                <label>Wyświetlanych rekordów:</label>
+                <select name="rec" id="rec" onchange="RecordLimit(this.value);">
+                    <option>10</option>
+                    <option selected>25</option>
+                    <option>50</option>
+                    <option>100</option>
+                    <option>250</option>
+                    <option>500</option>
+                </select><br>
+                <label>Godziny pracy:</label>
+                <input type="number" name="hours" id="hours" oninput="Filter(this.value,6,'.00');"><br>
+                <label>Godzina rozpoczęcia pracy:</label>
+                <input type="number" name="godzina_rozpoczecia" id="godzina_rozpoczecia" oninput="Filter(this.value,4,':00:00');"><br>
+                <label>Godzina zakończenia pracy:</label>
+                <input type="number" name="godzina_zakonczenia" id="godzina_zakonczenia" oninput="Filter(this.value,5,':00:00');"><br>
+                <input type="date" name="dataOd" id="dataOd" onchange="FilterDate();"> -
+                <input type="date" name="dataDo" id="dataDo" onchange="FilterDate();"><br>
+                <br>
                 <button name="pageDown" id="pageDown" onclick="ChangePage(-1)"><-</button>
                 <select name="page" id="page" onchange="ChangePage(this.value,true)"></select>
                 <button name="pageUp" id="pageUp" onclick="ChangePage(1)">-></button><br>
-                <label>Tylko zatwierdzone:</label>
-                <input type="checkbox" name="checkedOnly" id="checkedOnly" checked onchange='Filter((this.checked?"<span class=\"circle filled\"></span>":""),7);'>
+                <label>Tylko zatwierdzone (<span id="confirmed"></span>):</label>
+                <input type="checkbox" name="checkedOnly" id="checkedOnly" checked onchange='
+                Filter((this.checked?"<span class=\"circle filled\"></span>":""),7);
+                document.getElementById("notCheckedOnly").checked = false'><br>
+
+                <label>Tylko niezatwierdzone (<span id="notConfirmed"></span>):</label>
+                <input type="checkbox" name="notCheckedOnly" id="notCheckedOnly" onchange='
+                Filter((this.checked?"<span class=\"circle empty\"></span>":""),7);
+                document.getElementById("checkedOnly").checked = false'>
+
+                <p>Znaleziono <span style="color:aqua" id="founded">0</span> rekordów</p>
+                <button id="clear-filers" onclick="ClearFilters()">Wyczyść filtry</button>
             </fieldset>
         </div>
         <script src="javascript/filtry.js"></script>
+        <script src="javascript/przyciski.js"></script>
         <?php include 'php/admin/admin.php';?>
     </div>
 </body>

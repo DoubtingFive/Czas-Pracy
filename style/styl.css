@@ -104,7 +104,6 @@ div > fieldset {
     height: 20px;
     border-radius: 50%;
     border: 2px solid white;
-    margin-right: 10px;
 }
 .circle.filled{
     background-color: #4CAF50;
