@@ -14,5 +14,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sql = "INSERT INTO wpisy_pracy(`uzytkownik_id`,`data`, `godzina_rozpoczecia`,`godzina_zakonczenia`) VALUES ('".$_SESSION['id']."','$dzien','".$roz."0000','".$zak."0000');";
 	$idd = mysqli_query($idp,$sql);
 	mysqli_close($idp);
-	header("location: ../../index.php");
+	header("location: ../../index.php?wpis=success");
 }

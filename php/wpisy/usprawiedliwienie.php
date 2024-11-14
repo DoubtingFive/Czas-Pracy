@@ -13,5 +13,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sql = "INSERT INTO nieobecnosci(`uzytkownik_id`,`data_nieobecnosci`, `przyczyna`) VALUES ('".$_SESSION['id']."','$dzien','$przyczyna');";
 	$idd = mysqli_query($idp,$sql);
 	mysqli_close($idp);
-	header("location: ../../index.php");
+	header("location: ../../index.php?uspr=success");
 }

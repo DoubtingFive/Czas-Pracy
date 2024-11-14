@@ -19,12 +19,12 @@ if ($isUser){
 }
 $idd = mysqli_query($idp,$sql);
 mysqli_close($idp);
-$code = "<table><tr><th>";
-if ($isUser) $code .="Imie</th><th>Nazwisko</th><th>";
-$code.= "Data</th><th>
-	Godzina rozpoczęcia</th><th>
-	Godzina zakończenia</th><th>
-	Godzin pracy</th><th>
+$code = "<table><tr>";
+if ($isUser) $code .="<th onclick='Sort(\"u.imie\")'>Imie</th><th onclick='Sort(\"u.nazwisko\")'>Nazwisko</th>";
+$code.= "<th onclick='Sort(\"w.data\")'>Data</th><th onclick='Sort(\"w.godzina_rozpoczecia\")'>
+	Godzina rozpoczęcia</th><th onclick='Sort(\"w.godzina_zakonczenia\")'>
+	Godzina zakończenia</th><th onclick='Sort(\"w.godzin\")'>
+	Godzin pracy</th><th onclick='Sort(\"w.zatwierdzone\")'>
 	Zatwierdzone</th></tr>";
 while ($row= mysqli_fetch_row($idd)) {
 	if ($isUser) {
@@ -51,6 +51,10 @@ $code .= "</table></div>";
 echo $code;
 ?>
 <script>
+	function Sort(x) {
+		
+	}
+
 	wlaczKomentarz = true;
 	function zatwierdzWpis(pozycja_id, zatwierdzone,x) {
     const zatwierdzonePrzez = <?php echo json_encode($_SESSION['id']); ?>;

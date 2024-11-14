@@ -28,6 +28,12 @@ $y = $_SESSION['login'];
                 <legend>Dodaj Wpis</legend>
                 <br>
                 <h1>Dzień Pracy</h1><br>
+                <?php
+                    if (isset($_GET['wpis'])) {
+                        unset($_GET['wpis']);
+                        echo "<p style='color:lime'>Udało się dodać wpis</p>";
+                    }
+                ?>
                 <form name="wpis" method="POST" action="php/wpisy/wpis.php">
                     <label>Data: </label><input type="date" name="data1" id="data1" required><br>
                     <label>Godzina Rozpoczęcia: </label><input type="number" name="roz" id="roz" required><br>
@@ -35,6 +41,12 @@ $y = $_SESSION['login'];
                     <input type="submit" name="wyslij1" id="wyslij1" value="Wyślij">
                 </form><br>
                 <h1>Usprawiedliwienie</h1><br>
+                <?php
+                    if (isset($_GET['uspr'])) {
+                        unset($_GET['uspr']);
+                        echo "<p style='color:lime'>Udało się dodać usprawiedliwienie</p>";
+                    }
+                ?>
                 <form name="uspr" method="POST" action="php/wpisy/usprawiedliwienie.php">
                     <label>Data: </label><input type="date" name="data2" id="data2" required><br>
                     <label>Przyczyna: </label><input type="text" name="przyczyna" id="przyczyna" required><br>
@@ -44,6 +56,7 @@ $y = $_SESSION['login'];
                 <?php
                 if(isset($_GET['passwd'])) {
                     $passwd = $_GET['passwd'];
+                    unset($_GET['passwd']);
                     if ($passwd == 'success') {
                         echo "<p style='color:lime'>Udało się zmienić hasło</p>";
                     } else if ($passwd == 'wrong') {
@@ -67,54 +80,31 @@ $y = $_SESSION['login'];
                 const nazwaUzytkownika = "<?php echo $y; ?>";
             </script>
             <script src="javascript/licznikCzasu.js"></script>
-    
-            <!-- Tabela -->
-            <button id="tabela-toggle" onclick="TableToggle();"></button>
-            <button id="confirm-all" onclick="ConfirmAll();" title="Zatwierdź wszystkie widoczne rekordy">Zatwierdź wszystko</button>
-            <?php include 'php/tabela/wpisy.php';?>
-            <?php include 'php/tabela/uspr.php';?>
-        </div>
-        <div id="filtry">
-	        <fieldset>
-                <legend>Filtry</legend>
-                <label>Wyświetlanych rekordów:</label>
-                <select name="rec" id="rec" onchange="RecordLimit(this.value);">
-                    <option>10</option>
-                    <option selected>25</option>
-                    <option>50</option>
-                    <option>100</option>
-                    <option>250</option>
-                    <option>500</option>
-                </select><br>
-                <label>Godziny pracy:</label>
-                <input type="number" name="hours" id="hours" oninput="Filter(this.value,6,'.00');"><br>
-                <label>Godzina rozpoczęcia pracy:</label>
-                <input type="number" name="godzina_rozpoczecia" id="godzina_rozpoczecia" oninput="Filter(this.value,4,':00:00');"><br>
-                <label>Godzina zakończenia pracy:</label>
-                <input type="number" name="godzina_zakonczenia" id="godzina_zakonczenia" oninput="Filter(this.value,5,':00:00');"><br>
-                <input type="date" name="dataOd" id="dataOd" onchange="FilterDate();"> -
-                <input type="date" name="dataDo" id="dataDo" onchange="FilterDate();"><br>
-                <br>
-                <button name="pageDown" id="pageDown" onclick="ChangePage(-1)"><-</button>
-                <select name="page" id="page" onchange="ChangePage(this.value,true)"></select>
-                <button name="pageUp" id="pageUp" onclick="ChangePage(1)">-></button><br>
-                <label>Tylko zatwierdzone (<span id="confirmed"></span>):</label>
-                <input type="checkbox" name="checkedOnly" id="checkedOnly" checked onchange='
-                Filter((this.checked?"<span class=\"circle filled\"></span>":""),7);
-                document.getElementById("notCheckedOnly").checked = false'><br>
 
-                <label>Tylko niezatwierdzone (<span id="notConfirmed"></span>):</label>
-                <input type="checkbox" name="notCheckedOnly" id="notCheckedOnly" onchange='
-                Filter((this.checked?"<span class=\"circle empty\"></span>":""),7);
-                document.getElementById("checkedOnly").checked = false'>
+            <?php
+            if(!isset($_GET["historia"])) {
+                // <!-- Tabela -->
+                echo '<button id="tabela-toggle" onclick="TableToggle();"></button>';
+                // <!-- Only admin -->
+                if ((bool)$_SESSION['is_admin']) {
+                    echo '<button id="confirm-all" onclick="ConfirmAll();" title="Zatwierdź wszystkie widoczne rekordy">Zatwierdź wszystko</button>';
+                }
 
-                <p>Znaleziono <span style="color:aqua" id="founded">0</span> rekordów</p>
-                <button id="clear-filers" onclick="ClearFilters()">Wyczyść filtry</button>
-            </fieldset>
+            }
+            ?>
+            <?php if (!isset($_GET['historia'])) { 
+                include 'php/tabela/wpisy.php';
+                include 'php/tabela/uspr.php'; }?>
+
+            <?php if (isset($_GET['historia'])) { include 'php/tabela/historia.php'; }?>
         </div>
-        <script src="javascript/filtry.js"></script>
-        <script src="javascript/przyciski.js"></script>
-        <?php include 'php/admin/admin.php';?>
+        <?php
+        if (isset($_GET['historia'])) {
+            include 'php/filtry/historia.php';
+        } else include 'php/filtry/default.php';
+
+        include 'php/admin/admin.php';
+        ?>
     </div>
 </body>
 </html>

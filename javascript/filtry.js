@@ -75,7 +75,18 @@ function Filter(filter,type,force = "") {
         if (_tableValue[i].search("<td") == -1) continue;
         isFiltred = false
         for (j=0;j<filters.length;j++) {
-            if (_tableValue[i].split("<td")[types[j]].search(filters[j]) != -1) {
+            // if (types[j] <= 3) {
+            //     console.log(`j: ${j}`);
+            //     console.log(`types[j]: ${types[j]}`);
+            //     console.log(`filters[j]: ${filters[j]}`);
+            //     console.log(`_tableValue[i]: ${_tableValue[i]}`);
+            //     console.log(`_tableValue[i].split("<td"): ${_tableValue[i].split("<td")}`);
+            //     console.log(`_tableValue[i].split("<td")[types[j]]: ${_tableValue[i].split("<td")[types[j]]}`);
+            //     console.log(`_tableValue[i].split("<td")[types[j]].toLowerCase(): ${_tableValue[i].split("<td")[types[j]].toLowerCase()}`);
+            //     console.log(`_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j]): ${_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j])}`);
+            //     console.log(`_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j].toLowerCase()): ${_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j].toLowerCase())}`);
+            // }
+            if (_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j].toLowerCase()) != -1) {
                 continue;
             }
             isFiltred = true;

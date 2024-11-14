@@ -2,6 +2,7 @@
 $status = null;
 if (isset($_GET['status'])) {
     $status = $_GET['status'];
+    unset($_GET['status']);
 }
 if ((bool)$_SESSION['is_admin']) {
     echo '
@@ -29,7 +30,7 @@ if ((bool)$_SESSION['is_admin']) {
                 echo "<p style='color: red;'>Nie udało się dodać użytkownika.</p>";
             }
             echo '<br>
-            <a href="php/admin/zatwierdzanie.php">Panel Zatwierdzeń</a>
+            <a href="?historia=1">Zatwierdzenia</a>
         </div>
         <script>
             const panel = document.getElementById("administracja");
