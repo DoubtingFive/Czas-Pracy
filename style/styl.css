@@ -80,7 +80,6 @@ th > span {
 }
 #administracja {
     width: 98.5%;
-    background-color: rgba(255, 255, 255, 0.85); /* Jasne tło administracji */
     border: 3px solid #ccc;
     position: fixed;
     border-radius: 40px;
@@ -114,6 +113,61 @@ table {
     border-collapse: collapse;
     width: 100%;
 }
-td {
-    padding: 10px;
-    border: 1px solid #ccc; /* Stonowany kolor obramowania
+}
+
+td{ padding:10px;
+     border: 1px solid white;
+ }
+ th{ padding:10px;
+     background-color: rgba(0,0,0,0.5);
+ }
+ button#logout{ 
+     position:absolute;
+     left:1%;
+     top:-1vh;
+     padding: 10px;
+     margin-top: 1.5em;
+     background-color: #6a5acd;
+     color: white;
+     border: none;
+     border-radius: 5px;
+     font-size: 1.2em;
+     font-weight: bold;
+     cursor: pointer;
+     transition: background-color 0.3s ease, transform 0.2s ease;
+ }
+ button#adminPanel{ 
+     color:white;
+     width: 200px;
+     height: 35px;
+     border-top-left-radius: 12px;
+     border-top-right-radius: 12px;
+     background-color: rgba(80, 80, 80,0.5);
+     border:3px solid white;
+     transition: bottom 0.3s ease;
+     position: absolute;
+     bottom: .5vh;
+     left: 50%;
+     transform: translateX(-50%);
+ }
+ button#adminPanel:hover{ 
+     background-color: rgb(100, 100, 100);
+     animation-name: animacjaAdministracja;
+     animation-fill-mode: forwards;
+     animation-duration: 0.3s;
+ }
+ img{ 
+     position: absolute;
+     left:6%;
+     top:6vh;
+     height: 8vh }
+ a { 
+     color: rgb(200, 200, 200);
+     text-decoration: none;
+     font-size: 1.5em;
+     margin-left: 13px;
+ }
+ a:hover { 
+     color: white;
+     text-shadow: 0 0 13px white;
+     
