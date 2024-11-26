@@ -41,7 +41,6 @@ th > span {
     width: 14.5%;
     height: 84vh;
     float: left;
-    background-color: rgba(255, 255, 255, 0.9); /* Jasne tło nawigacji */
 }
 #kontent {
     padding: 1%;
