@@ -95,6 +95,7 @@ DELIMITER;
 
 EOF;
 
+$file .= "\n";
 $file .= $tables_insert;
 
 file_put_contents("backup.sql", $file);
