@@ -65,7 +65,7 @@ echo <<<'EOT'
         <select name="page" id="page" onchange="ChangePage(this.value,true)"></select>
         <button name="pageUp" id="pageUp" onclick="ChangePage(1)">-></button><br>
         
-        <p>Znaleziono <span style="color:aqua" id="founded">0</span> rekordów</p>
+        <p>Znaleziono <span style="color:navy" id="founded">0</span> rekordów</p>
         <button id="clear-filers" onclick="ClearFilters()">Wyczyść filtry</button>
     </fieldset>
 </div>
