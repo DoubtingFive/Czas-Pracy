@@ -40,7 +40,7 @@ echo '<div id="filtry">
         Filter((this.checked?"<span class=\"circle empty\"></span>":""),7);
         document.getElementById("checkedOnly").checked = false'>
 
-    <p>Znaleziono <span style="color:aqua" id="founded">0</span> rekordów</p>
+    <p>Znaleziono <span style="color:navy" id="founded">0</span> rekordów</p>
     <button id="clear-filers" onclick="ClearFilters()">Wyczyść filtry</button>
 </fieldset>
 </div>
