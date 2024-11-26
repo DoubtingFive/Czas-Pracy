@@ -14,15 +14,15 @@ div {
     margin-bottom: 0.5vh;
     margin-left: 0.25%;
     margin-right: 0.25%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 div > fieldset > legend {
     text-align: center;
-    color: rgb(111, 110, 150);
+    color: #ccccdd;
     font-size: 1.6em;
 }
 div > fieldset {
-    border: solid 2px rgb(111, 110, 150);
+    border: solid 2px #ccccdd;
     position: relative;
     height: 100%;
     padding: 0;
@@ -71,12 +71,12 @@ th>span{
 #kontent::-webkit-scrollbar-thumb {
     background-color: purple;
     border-radius: 10px;
-    border: 2px solid rgba(221, 110, 255,0.5);
+    border: 2px solid rgba(111, 110, 150,0.8);
 }
 
 #kontent::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(221, 110, 255,0.5);
-    border: 2px solid rgb(221, 110, 255);
+    background-color: rgba(200, 200, 225,0.8);
+    border: 2px solid rgb(111, 110, 155);
 }
 #filtry {
     width: 14.5%;
