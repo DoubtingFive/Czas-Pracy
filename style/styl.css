@@ -5,7 +5,7 @@
 body {
     overflow: hidden;
     margin: 0;
-    background-color: white;
+    background-color: #eeeeee;
     background-attachment: fixed;
     color: white;
 }
@@ -14,7 +14,7 @@ div {
     margin-bottom: 0.5vh;
     margin-left: 0.25%;
     margin-right: 0.25%;
-    background-color: rgba(12, 64, 128, 0.5);
+    background-color: rgba(12, 64, 64, 0.5);
 }
 div > fieldset > legend {
     text-align: center;
