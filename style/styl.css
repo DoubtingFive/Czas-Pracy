@@ -5,7 +5,7 @@
 body {
     overflow: hidden;
     margin: 0;
-    background-image: url(../grafika/tlo.png),linear-gradient(purple, navy);
+    background-image: gray;
     background-attachment: fixed;
     color: white;
 }
