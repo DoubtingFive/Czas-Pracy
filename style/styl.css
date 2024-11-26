@@ -7,7 +7,7 @@ body {
     margin: 0;
     background-color: #f0f4f8; /* Jasny, stonowany kolor tła */
     background-attachment: fixed;
-    color: #333; /* Ciemny kolor tekstu dla lepszej czytelności */
+    color: black; /* Ciemny kolor tekstu dla lepszej czytelności */
 }
 div {
     margin-top: 0.5vh;
