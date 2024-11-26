@@ -5,7 +5,7 @@
 body {
     overflow: hidden;
     margin: 0;
-    background-color: #f0f4f8; /* Jasny, stonowany kolor tła */
+    background-color: black; /* Jasny, stonowany kolor tła */
     background-attachment: fixed;
     color: black; /* Ciemny kolor tekstu dla lepszej czytelności */
 }
