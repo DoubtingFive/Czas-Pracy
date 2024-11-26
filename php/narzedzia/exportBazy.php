@@ -84,6 +84,14 @@ CREATE TABLE zatwierdzenia (
 CREATE INDEX idx_uzytkownik_data ON wpisy_pracy(uzytkownik_id, data);
 CREATE INDEX idx_uzytkownik_data_nieobecnosci ON nieobecnosci(uzytkownik_id, data_nieobecnosci);
 
+
+EOF;
+
+$file .= "\n";
+$file .= $tables_insert;
+
+$file .= <<< EOF
+
 DELIMITER $$
 CREATE TRIGGER before_user_insert
 BEFORE INSERT ON uzytkownicy
@@ -93,10 +101,10 @@ BEGIN
 END $$
 DELIMITER;
 
+
 EOF;
 
-$file .= "\n";
-$file .= $tables_insert;
+$file .= "\n\n";
 
 file_put_contents("backup.sql", $file);
 echo "<a id='pobierz' href='backup.sql'>Pobierz plik</a>
