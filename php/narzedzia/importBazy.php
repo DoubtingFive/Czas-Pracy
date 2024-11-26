@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     mysqli_free_result($result);
                 }
             } while (mysqli_next_result($conn));
-            echo "Import zakończony pomyślnie. <a href='narzedzia.php'>Powrót</a>'";
+            echo "Import zakończony pomyślnie. <a href='narzedzia.php'>Powrót</a>";
         } else {
             echo "Błąd podczas importu: " . mysqli_error($conn);
         }
