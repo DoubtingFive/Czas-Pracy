@@ -84,9 +84,6 @@ CREATE TABLE zatwierdzenia (
 CREATE INDEX idx_uzytkownik_data ON wpisy_pracy(uzytkownik_id, data);
 CREATE INDEX idx_uzytkownik_data_nieobecnosci ON nieobecnosci(uzytkownik_id, data_nieobecnosci);
 
-CREATE USER 'public'@'%' IDENTIFIED VIA mysql_native_password USING '***';GRANT ALL PRIVILEGES ON *.* TO 'public'@'%' REQUIRE NONE WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
-CREATE USER 'website'@'%' IDENTIFIED VIA mysql_native_password USING '***';GRANT SELECT, INSERT, UPDATE ON *.* TO 'website'@'%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
-
 DELIMITER $$
 CREATE TRIGGER before_user_insert
 BEFORE INSERT ON uzytkownicy
