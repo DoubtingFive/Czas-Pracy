@@ -31,8 +31,7 @@ th > span {
     height: 13vh;
     font-size: 1.7em;
     float: left;
-    background-color: rgba(0, 0, 0, 0.7); /* Ciemne tło banera */
-    color: white; /* Biały kolor tekstu */
+    background-color: rgba(0, 0, 12, 0.6); /* Ciemne tło banera */
 }
 #tytul {
     margin: 0;
@@ -94,6 +93,7 @@ th > span {
 .czas {
     position: absolute;
     left: 12%;
+    color: white;
 }
 .circle {
     display: inline-block;
