@@ -84,6 +84,7 @@ th > span {
     bottom: -30vh;
     height: 30vh;
     padding: 2%;
+    background-color: navy;
 }
 @keyframes animacjaAdministracja {
     0% { height: 35px; }
