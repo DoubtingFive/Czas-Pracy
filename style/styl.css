@@ -78,13 +78,13 @@ th > span {
 }
 #administracja {
     width: 98.5%;
-    border: 3px solid #ccc;
     position: fixed;
     border-radius: 40px;
     bottom: -30vh;
     height: 30vh;
     padding: 2%;
-    background-color: rgba(0, 0, 12, 0.6);;
+    background-color: rgba(0, 0, 12, 0.8);
+    color:white;
 }
 @keyframes animacjaAdministracja {
     0% { height: 35px; }
