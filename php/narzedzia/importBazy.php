@@ -11,6 +11,12 @@ if (!(bool)$_SESSION['is_admin']) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn = mysqli_connect("localhost", "root", "*G(EjzAR!KEsUzoO", "pracownicy")
     or die("Błąd połączenia z bazą danych");
+	
+    mysqli_query($conn,"DROP TABLE zatwierdzenia");
+    mysqli_query($conn,"DROP TABLE wpisy_pracy");
+    mysqli_query($conn,"DROP TABLE nieobecnosci");
+    mysqli_query($conn,"DROP TABLE zmiany");
+    mysqli_query($conn,"DROP TABLE uzytkownicy");
 
     if (isset($_FILES['sql_file']) && $_FILES['sql_file']['error'] == UPLOAD_ERR_OK) {
         $uploadedFile = $_FILES['sql_file']['tmp_name'];
