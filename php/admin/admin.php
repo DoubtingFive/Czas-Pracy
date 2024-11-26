@@ -31,6 +31,7 @@ if ((bool)$_SESSION['is_admin']) {
             }
             echo '<br>
             <a href="?historia=1">Zatwierdzenia</a>
+            <a href="php/narzedzia/narzedzia.php">Narzędzia</a>
         </div>
         <script>
             const panel = document.getElementById("administracja");

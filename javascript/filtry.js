@@ -1,13 +1,14 @@
-const wpisyTable = document.getElementById('lista-pracownikow');
-const usprTable = document.getElementById('lista-usprawiedliwien');
+var wpisyTable = document.getElementById('lista-pracownikow');
+var usprTable = document.getElementById('lista-usprawiedliwien');
 const pageDropdown = document.getElementById("page");
 const dataFrom = document.getElementById("dataOd");
 const dataTo = document.getElementById("dataDo");
 const founded = document.getElementById("founded");
 const ileWpisow = wpisyTable.innerHTML.split("<tr>").length-2;
 const ileUspr = usprTable.innerHTML.split("<tr>").length-2;
-let wpisyVal = wpisyTable.innerHTML;
-let usprVal = usprTable.innerHTML;
+
+var wpisyVal = wpisyTable.innerHTML;
+var usprVal = usprTable.innerHTML;
 var table = wpisyTable;
 var tableValue = wpisyVal;
 var filteredValue = tableValue;
@@ -18,6 +19,24 @@ var pagesModulo = 0;
 var filters = []
 var types = []
 var dates = ['']
+
+function Initalization() {
+    wpisyTable = document.getElementById('lista-pracownikow');
+    usprTable = document.getElementById('lista-usprawiedliwien');
+    wpisyVal = wpisyTable.innerHTML;
+    usprVal = usprTable.innerHTML;
+    try {
+        table = isUspr?usprTable:wpisyTable;
+        tableValue = isUspr?usprVal:wpisyVal;
+    } catch (ReferenceError) {
+        table = wpisyTable;
+        tableValue = wpisyVal;
+    }
+    filteredValue = tableValue;
+    founded.innerText = filteredValue.split("<tr>").length-2;
+    Filter("",0);
+}
+
 function RecordLimit(records) {
     if (recordLimit != records) {
         page *= recordLimit/records;
@@ -165,4 +184,4 @@ function ChangePage(change,force=false) {
     pageDropdown.value = Math.round(page+1);
     RecordLimit(recordLimit);
 }
-Filter("<span class=\"circle filled\"></span>",7)
+Initalization();

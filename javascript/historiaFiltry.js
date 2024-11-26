@@ -1,11 +1,10 @@
-const tableConst = document.getElementById('zatwierdzenia-lista');
+var tableConst = document.getElementById('zatwierdzenia-lista');
 const pageDropdown = document.getElementById("page");
 const dataFrom = document.getElementById("dataOd");
 const dataTo = document.getElementById("dataDo");
 const dataTableFrom = document.getElementById("dataOd1");
 const dataTableTo = document.getElementById("dataDo1");
 const founded = document.getElementById("founded");
-const ile = tableConst.innerHTML.split("<tr>").length-2;
 let tableVal = tableConst.innerHTML;
 var table = tableConst;
 var tableValue = tableVal;
@@ -19,6 +18,16 @@ var types = []
 var typesTable = []
 var dates = []
 var datesTable = []
+
+function Initalization() {
+    tableConst = document.getElementById('zatwierdzenia-lista');
+    tableVal = tableConst.innerHTML;
+    table = tableConst;
+    tableValue = tableVal;
+    filteredValue = tableValue;
+    Filter("",1);
+}
+
 function RecordLimit(records) {
     if (recordLimit != records) {
         page *= recordLimit/records;
@@ -46,6 +55,7 @@ function RecordLimit(records) {
         pageDropdown.style.display = "block";
         pageDropdown.innerHTML = code;
         pageDropdown.value = Math.round(page+1);
+        if (page >= pagesCount) page = pagesCount-1
     }
     
     _tableValue.splice(0,1)
@@ -63,7 +73,7 @@ function RecordLimit(records) {
 }
 function Filter(filter,type,force = "",typeTable = -1) {
     let index = -1;
-    if (type == 2) {
+    if (typeTable != -1) {
         index = typesTable.indexOf(typeTable);
     } else {
         index = types.indexOf(type);
@@ -79,58 +89,56 @@ function Filter(filter,type,force = "",typeTable = -1) {
         types.push(type);
         typesTable.push(typeTable);
     }
+    FiltersCheck()
+    // let _tableValue = tableValue.split("<tr id=\"base\">");
+    // _tableValue.push("")
 
-    let _tableValue = tableValue.split("<tr id=\"base\">");
-    _tableValue.push("")
-
-    filteredValue = "<tr id=\"base\">" + _tableValue[0];
-    for (let i=1;i<_tableValue.length;i++) {
-        if (_tableValue[i] == undefined) continue;
-        if (_tableValue[i].search("<td") == -1) continue;
-        isFiltred = false
-        for (let j=0;j<filters.length;j++) {
-            // if (types[j] <= 3) {
-                // console.log(`j: ${j}`);
-                // console.log(`types[j]: ${types[j]}`);
-                // console.log(`filters[j]: ${filters[j]}`);
-                // console.log(`_tableValue[i]: ${_tableValue[i]}`);
-                // console.log(`_tableValue[i].split("<td"): ${_tableValue[i].split("<td")}`);
-                // console.log(`_tableValue[i].split("<td")[types[j]]: ${_tableValue[i].split("<td")[types[j]]}`);
-                // console.log(`_tableValue[i].split("<td")[types[j]].toLowerCase(): ${_tableValue[i].split("<td")[types[j]].toLowerCase()}`);
-                // console.log(`_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j]): ${_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j])}`);
-                // console.log(`_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j].toLowerCase()): ${_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j].toLowerCase())}`);
-            // }
-            if (types[j] == 2) {
-                if (_tableValue[i].split("<td id=\"base1\"")[types[j]].split("<tr>")[2].split("<td id=\"table\"")[typesTable[j]].toLowerCase().search(filters[j].toLowerCase()) != -1) {
-                    continue;
-                }
-            }
-            else if (_tableValue[i].split("<td id=\"base1\"")[types[j]].toLowerCase().search(filters[j].toLowerCase()) != -1) {
-                continue;
-            }
-            isFiltred = true;
-        }
-        if (isFiltred) continue;
-        if (dates) isFiltred = true
-        for (let j=0;j<datesTable.length;j++) {
-            if (_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\"")[3].search(datesTable[j]) != -1) {
-                isFiltred = false
-                break;
-            }
-        }
-        if (isFiltred) {
-            for (let j=0;j<dates.length;j++) {
-                if (_tableValue[i].split("<td id=\"base1\"")[3].search(dates[j]) != -1) {
-                    isFiltred = false
-                    break;
-                }
-            }
-        }
-        if (isFiltred) continue;
-        filteredValue += "<tr id=\"base\">" + _tableValue[i];
-    }
-    filteredValue += _tableValue[_tableValue.length-1];
-    RecordLimit(recordLimit)
+    // filteredValue = "<tr id=\"base\">" + _tableValue[0];
+    // for (let i=1;i<_tableValue.length;i++) {
+    //     if (_tableValue[i] == undefined) continue;
+    //     if (_tableValue[i].search("<td") == -1) continue;
+    //     isFiltred = false
+    //     for (let j=0;j<filters.length;j++) {
+    //         // console.log(`j: ${j}`);
+    //         // console.log(`types[j]: ${types[j]}`);
+    //         // console.log(`filters[j]: ${filters[j]}`);
+    //         // console.log(`_tableValue[i]: ${_tableValue[i]}`);
+    //         // console.log(`_tableValue[i].split("<td"): ${_tableValue[i].split("<td")}`);
+    //         // console.log(`_tableValue[i].split("<td")[types[j]]: ${_tableValue[i].split("<td")[types[j]]}`);
+    //         // console.log(`_tableValue[i].split("<td")[types[j]].toLowerCase(): ${_tableValue[i].split("<td")[types[j]].toLowerCase()}`);
+    //         // console.log(`_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j]): ${_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j])}`);
+    //         // console.log(`_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j].toLowerCase()): ${_tableValue[i].split("<td")[types[j]].toLowerCase().search(filters[j].toLowerCase())}`);
+    //         if (types[j] == 2) {
+    //             if (_tableValue[i].split("<td id=\"base1\"")[types[j]].split("<tr>")[2].split("<td id=\"table\"")[typesTable[j]].toLowerCase().search(filters[j].toLowerCase()) != -1) {
+    //                 continue;
+    //             }
+    //         }
+    //         else if (_tableValue[i].split("<td id=\"base1\"")[types[j]].toLowerCase().search(filters[j].toLowerCase()) != -1) {
+    //             continue;
+    //         }
+    //         isFiltred = true;
+    //     }
+    //     if (isFiltred) continue;
+    //     if (dates) isFiltred = true
+    //     for (let j=0;j<datesTable.length;j++) {
+    //         if (_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\"")[3].search(datesTable[j]) != -1) {
+    //             isFiltred = false
+    //             break;
+    //         }
+    //     }
+    //     if (isFiltred) {
+    //         for (let j=0;j<dates.length;j++) {
+    //             if (_tableValue[i].split("<td id=\"base1\"")[3].search(dates[j]) != -1) {
+    //                 isFiltred = false
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     if (isFiltred) continue;
+    //     filteredValue += "<tr id=\"base\">" + _tableValue[i];
+    // }
+    // filteredValue += _tableValue[_tableValue.length-1];
+    // RecordLimit(recordLimit)
 }
 function FilterDate() {
     dates = []
@@ -150,60 +158,55 @@ function FilterDate() {
             }
         }
     } else dates = [(dataFrom.value != ''?dataFrom.value:dataTo.value)]
-
+    FiltersCheck()
+}
+function FiltersCheck() {
     let _tableValue = tableValue.split("<tr id=\"base\">");
+    _tableValue.push("")
 
     filteredValue = "<tr id=\"base\">" + _tableValue[0];
-
-    for (let i=1;i<_tableValue.length-2;i++) {
-        if (_tableValue[i].search("<td") == -1) break;
-        isFiltred = false
+    for (let i=1;i<_tableValue.length;i++) {
+        if (_tableValue[i] == undefined) continue;
+        if (_tableValue[i].search("<td") == -1) continue;
+        let isFiltred = false
         for (let j=0;j<filters.length;j++) {
-            if (_tableValue[i].split("<td")[types[j]].search(filters[j]) != -1) {
+            if (types[j] == 2) {
+                if (_tableValue[i].split("<td id=\"base1\"")[types[j]].split("<tr>")[2].split("<td id=\"table\"")[typesTable[j]].toLowerCase().search(filters[j].toLowerCase()) != -1) {
+                    continue;
+                }
+            }
+            else if (_tableValue[i].split("<td id=\"base1\"")[types[j]].toLowerCase().search(filters[j].toLowerCase()) != -1) {
                 continue;
             }
             isFiltred = true;
         }
         if (isFiltred) continue;
-        if (datesTable || dates) isFiltred = true
-        if (datesTable) {
+        if (datesTable.length > 0) {
+            isFiltred = false
             for (let j=0;j<datesTable.length;j++) {
-                console.log(`j: ${j}`);
-                console.log(`datesTable[j]: ${datesTable[j]}`);
-                console.log(`_tableValue[i]: ${_tableValue[i]}`);
-                console.log(`_tableValue[i].split("<td id=\"base1\""): ${_tableValue[i].split("<td id=\"base1\"")}`);
-                console.log(`_tableValue[i].split("<td id=\"base1\"")[2]: ${_tableValue[i].split("<td id=\"base1\"")[2]}`);
-                console.log(`_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2]: ${_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2]}`);
-                console.log(`_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\""): ${_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\"")}`);
-                console.log(`_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\"")[3]: ${_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\"")[3]}`);
-                console.log(`_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\"")[3].search(datesTable[j]): ${_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\"")[3].search(datesTable[j])}`);
                 if (_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\"")[3].search(datesTable[j]) != -1) {
-                    isFiltred = false
+                    isFiltred = true
                     break;
                 }
             }
+            if (!isFiltred) continue;
         }
-        if (!isFiltred) continue;
-        if (dates) {
+        if (dates.length > 0) {
+            console.log("if (dates.length > 0) { = true")
+            isFiltred = true
             for (let j=0;j<dates.length;j++) {
-                console.log(`j: ${j}`);
-                console.log(`dates[j]: ${dates[j]}`);
-                console.log(`_tableValue[i]: ${_tableValue[i]}`);
-                console.log(`_tableValue[i].split("<td id=\"base1\""): ${_tableValue[i].split("<td id=\"base1\"")}`);
-                console.log(`_tableValue[i].split("<td id=\"base1\"")[3]: ${_tableValue[i].split("<td id=\"base1\"")[3]}`);
-                console.log(`_tableValue[i].split("<td id=\"base1\"")[3].search(dates[j]): ${_tableValue[i].split("<td id=\"base1\"")[3].search(dates[j])}`);
-            
                 if (_tableValue[i].split("<td id=\"base1\"")[3].search(dates[j]) != -1) {
                     isFiltred = false
                     break;
                 }
             }
+            if (isFiltred) continue;
         }
-        if (isFiltred) continue;
         filteredValue += "<tr id=\"base\">" + _tableValue[i];
     }
     RecordLimit(recordLimit)
 }
+
 function FilterDateTable() {
     datesTable = []
     if (dataTableFrom.value != '' && dataTableTo.value != '') {
@@ -222,40 +225,40 @@ function FilterDateTable() {
             }
         }
     } else datesTable = [(dataTableFrom.value != ''?dataTableFrom.value:dataTableTo.value)]
+    FiltersCheck()
+    // let _tableValue = tableValue.split("<tr id=\"base\">");
 
-    let _tableValue = tableValue.split("<tr id=\"base\">");
+    // filteredValue = "<tr id=\"base\">" + _tableValue[0];
 
-    filteredValue = "<tr id=\"base\">" + _tableValue[0];
-
-    for (let i=1;i<_tableValue.length-2;i++) {
-        if (_tableValue[i].search("<td") == -1) break;
-        isFiltred = false
-        for (let j=0;j<filters.length;j++) {
-            if (_tableValue[i].split("<td")[types[j]].search(filters[j]) != -1) {
-                continue;
-            }
-            isFiltred = true;
-        }
-        if (isFiltred) continue;
-        if (dates) isFiltred = true
-        for (let j=0;j<datesTable.length;j++) {
-            if (_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\"")[3].search(datesTable[j]) != -1) {
-                isFiltred = false
-                break;
-            }
-        }
-        if (isFiltred) {
-            for (let j=0;j<dates.length;j++) {
-                if (_tableValue[i].split("<td id=\"base1\"")[3].search(dates[j]) != -1) {
-                    isFiltred = false
-                    break;
-                }
-            }
-        }
-        if (isFiltred) continue;
-        filteredValue += "<tr id=\"base\">" + _tableValue[i];
-    }
-    RecordLimit(recordLimit)
+    // for (let i=1;i<_tableValue.length-2;i++) {
+    //     if (_tableValue[i].search("<td") == -1) break;
+    //     isFiltred = false
+    //     for (let j=0;j<filters.length;j++) {
+    //         if (_tableValue[i].split("<td")[types[j]].search(filters[j]) != -1) {
+    //             continue;
+    //         }
+    //         isFiltred = true;
+    //     }
+    //     if (isFiltred) continue;
+    //     if (dates) isFiltred = true
+    //     for (let j=0;j<datesTable.length;j++) {
+    //         if (_tableValue[i].split("<td id=\"base1\"")[2].split("<tr>")[2].split("<td id=\"table\"")[3].search(datesTable[j]) != -1) {
+    //             isFiltred = false
+    //             break;
+    //         }
+    //     }
+    //     if (isFiltred) {
+    //         for (let j=0;j<dates.length;j++) {
+    //             if (_tableValue[i].split("<td id=\"base1\"")[3].search(dates[j]) != -1) {
+    //                 isFiltred = false
+    //                 break;
+    //             }
+    //         }
+    //     }
+    //     if (isFiltred) continue;
+    //     filteredValue += "<tr id=\"base\">" + _tableValue[i];
+    // }
+    // RecordLimit(recordLimit)
 }
 function ChangePage(change,force=false) {
     if (force)
@@ -272,4 +275,4 @@ function ChangePage(change,force=false) {
     pageDropdown.value = Math.round(page+1);
     RecordLimit(recordLimit);
 }
-Filter("",1)
+Initalization();

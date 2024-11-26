@@ -5,6 +5,11 @@ if (!isset($_SESSION['login'], $_SESSION['id'], $_SESSION['start_sesji'], $_SESS
 }
 $x = $_SESSION['start_sesji'];
 $y = $_SESSION['login'];
+if (isset($_GET["historia"])) {
+    if ($_GET["historia"] == 0) {
+        unset($_GET["historia"]);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +29,12 @@ $y = $_SESSION['login'];
             <h1 id="tytul">Czas pracy</h1>
         </div>
         <div id="nawigacja">
-	        <fieldset>
+            <fieldset>
+                <?php
+                    if (isset($_GET["historia"])) {
+                        echo "<a href='?historia=0'>Powróć</a>";
+                    }
+                ?>
                 <legend>Dodaj Wpis</legend>
                 <br>
                 <h1>Dzień Pracy</h1><br>
@@ -80,28 +90,37 @@ $y = $_SESSION['login'];
                 const nazwaUzytkownika = "<?php echo $y; ?>";
             </script>
             <script src="javascript/licznikCzasu.js"></script>
+            <?php
+            if (!isset($_GET["narzedzia"])) {
+                echo '<script src="javascript/sortowanie.js"></script>';
+            }
+            ?>
 
             <?php
-            if(!isset($_GET["historia"])) {
-                // <!-- Tabela -->
+            if (isset($_GET["historia"])) { 
+                include 'php/tabela/historia.php';
+                TabelaHistoria();
+            // } else if(isset($_GET["narzedzia"])) {
+            //     include 'php/narzedzia/narzedzia.php';
+            } else {
                 echo '<button id="tabela-toggle" onclick="TableToggle();"></button>';
                 // <!-- Only admin -->
                 if ((bool)$_SESSION['is_admin']) {
                     echo '<button id="confirm-all" onclick="ConfirmAll();" title="Zatwierdź wszystkie widoczne rekordy">Zatwierdź wszystko</button>';
                 }
 
+                // <!-- Tabela -->
+                include 'php/tabela/wpisy.php';
+                include 'php/tabela/uspr.php';
+                TabelaWpisy();
+                TabelaUspr();
             }
             ?>
-            <?php if (!isset($_GET['historia'])) { 
-                include 'php/tabela/wpisy.php';
-                include 'php/tabela/uspr.php'; }?>
-
-            <?php if (isset($_GET['historia'])) { include 'php/tabela/historia.php'; }?>
         </div>
         <?php
-        if (isset($_GET['historia'])) {
+        if (isset($_GET["historia"])) {
             include 'php/filtry/historia.php';
-        } else include 'php/filtry/default.php';
+        } else { include 'php/filtry/default.php';}
 
         include 'php/admin/admin.php';
         ?>

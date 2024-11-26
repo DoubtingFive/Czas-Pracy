@@ -31,7 +31,7 @@ echo '<div id="filtry">
         <select name="page" id="page" onchange="ChangePage(this.value,true)"></select>
         <button name="pageUp" id="pageUp" onclick="ChangePage(1)">-></button><br>
         <label>Tylko zatwierdzone (<span id="confirmed"></span>):</label>
-        <input type="checkbox" name="checkedOnly" id="checkedOnly" checked onchange='
+        <input type="checkbox" name="checkedOnly" id="checkedOnly" onchange='
         Filter((this.checked?"<span class=\"circle filled\"></span>":""),7);
         document.getElementById("notCheckedOnly").checked = false'><br>
 

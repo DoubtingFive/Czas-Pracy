@@ -28,6 +28,9 @@ div > fieldset {
     padding: 0;
     font-size: small;
 }
+th>span{
+    letter-spacing: -1.5px;
+}
 
 #baner {
     padding:1%;

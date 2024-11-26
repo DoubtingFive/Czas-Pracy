@@ -30,26 +30,29 @@ echo <<<'EOT'
             <input type="date" name="dataOd1" id="dataOd1" onchange="FilterDateTable();"> -
             <input type="date" name="dataDo1" id="dataDo1" onchange="FilterDateTable();"><br>
             <br>
-            <label>Tylko zatwierdzone (<span id="confirmed"></span>):</label>
+            <label>Tylko zatwierdzone:</label>
             <input type="checkbox" name="checkedOnly" id="checkedOnly" onchange='
-            Filter((this.checked?"<span class=\"circle filled\"></span>":""),2,'',7);
+            Filter((this.checked?"<span class=\"circle filled\"></span>":""),2,"",7);
             document.getElementById("notCheckedOnly").checked = false'><br>
 
-            <label>Tylko niezatwierdzone (<span id="notConfirmed"></span>):</label>
+            <label>Tylko niezatwierdzone:</label>
             <input type="checkbox" name="notCheckedOnly" id="notCheckedOnly" onchange='
-            Filter((this.checked?"<span class=\"circle empty\"></span>":""),2,'',7);
-            document.getElementById("checkedOnly").checked = false'>
-        </fieldset><br>
+            Filter((this.checked?"<span class=\"circle empty\"></span>":""),2,"",7);
+            document.getElementById("checkedOnly").checked = false;'>
         
+        </fieldset><br>
+        <label>Zatwierdzone przez: </label>
+        <input type="text" name="imie&naz" id="imie&naz" oninput="Filter(this.value,1);">
+
         <input type="date" name="dataOd" id="dataOd" onchange="FilterDate();"> -
         <input type="date" name="dataDo" id="dataDo" onchange="FilterDate();"><br>
 
-        <label>Zatwierdzenia (<span id="confirmed"></span>):</label>
+        <label>Zatwierdzenia:</label>
         <input type="checkbox" name="conf" id="conf" onchange='
         Filter((this.checked?"<span class=\"circle filled\"></span>":""),4);
         document.getElementById("notconf").checked = false'><br>
 
-        <label>Cofniecie zatwierdzenia (<span id="notConfirmed"></span>):</label>
+        <label>Cofniecie zatwierdzenia:</label>
         <input type="checkbox" name="notconf" id="notconf" onchange='
         Filter((this.checked?"<span class=\"circle empty\"></span>":""),4);
         document.getElementById("conf").checked = false'><br>
